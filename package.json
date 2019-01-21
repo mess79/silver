@@ -1,0 +1,38 @@
+{
+  "name": "autofiller",
+  "version": "1.0.0",
+  "description": "Test for data import and export",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha",
+    "build": "webpack",
+    "start": "app.js"
+  },
+  "author": "Sam Carlton",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.20.0",
+    "chai": "^4.2.0",
+    "cookie-parser": "^1.4.3",
+    "crypto-random-string": "^1.0.0",
+    "express": "^4.16.4",
+    "formidable": "^1.2.1",
+    "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
+    "mocha": "^5.2.0",
+    "mongoose": "^5.3.15",
+    "nib": "^1.1.2",
+    "pdf-fill-form": "^4.1.0",
+    "pug": "^2.0.3",
+    "stylus": "^0.54.5",
+    "vue": "^2.5.21"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^1.0.0",
+    "html-webpack-exclude-assets-plugin": "0.0.7",
+    "html-webpack-plugin": "^3.2.0",
+    "pug-loader": "^2.4.0",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.1"
+  }
+}
