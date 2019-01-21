@@ -21,6 +21,7 @@
     "lodash": "^4.17.11",
     "mocha": "^5.2.0",
     "mongoose": "^5.3.15",
+    "mongoose-sequence": "^4.0.1",
     "nib": "^1.1.2",
     "pdf-fill-form": "^4.1.0",
     "pug": "^2.0.3",

@@ -5,6 +5,8 @@ const port = 3000
 const cookieParser = require("cookie-parser")
 const routes = require("./routes")(express, app);
 const path = require("path");
+
+
 //const errors = require("./routes/errors")(app);
 
 //setters and users
@@ -21,5 +23,59 @@ app.get(['/test'], function (req, res) {
   res.render('test')
 })
 
-
 app.listen(port, () => console.log(`App listening on port ${port}!`))
+
+/*
+const invoice = require("./models/invoice");
+invoice.create({
+  address : {
+    line1: "1 test road",
+    line2 : "test add line 2",
+    line3 : "test add third line",
+    city : "test city",
+    county : "test county",
+    zip : "TEST21",
+    country : "UNITED TEST COUNTRY"
+  },
+  line_item : [{
+    service : "test service",
+    quantity : 2,
+    amount : 50,
+    tax : 0.2
+  },{
+    service : "test service 2",
+    quantity : 4,
+    amount : 25,
+    tax : 0
+  }],
+  contact : ["5c3ee21e8910d4572a56d613"],
+  person : ["5c327a5589ecdd4af7821c6a"]
+}, function (err, small) {
+  if (err) {console.log(handleError(err))} else {
+    console.log(small);
+  }
+  // saved!
+});
+*/
+
+/*
+const company = require("./models/company");
+company.create({
+  name : "test company",
+  address : [{
+    line1: "1 test road",
+    line2 : "test add line 2",
+    line3 : "test add third line",
+    city : "test city",
+    county : "test county",
+    zip : "TEST21",
+    country : "UNITED TEST COUNTRY"
+  }],
+  contact : "5c3ee21e8910d4572a56d613"
+}, function (err, small) {
+  if (err) {console.log(handleError(err))} else {
+    console.log(small);
+  }
+  // saved!
+});
+*/

@@ -38,7 +38,10 @@ const logon = function(express) {
                     audience: req.headers.host
                   }
                   let payload = {
-                    subject: result._id
+                    subject: result._id,
+                    permissions : result.permissions,
+                    company : result.company,
+                    people : result.person
                   }
                   res.cookie('authorization', jwt.sign(payload, options), {
                     expires: new Date(Date.now() + 1800000),
