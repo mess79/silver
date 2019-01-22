@@ -26,6 +26,42 @@ app.get(['/test'], function (req, res) {
 app.listen(port, () => console.log(`App listening on port ${port}!`))
 
 /*
+const order = require("./models/order");
+order.create({
+delivery_address : {
+  line1: "1 test road",
+  line2 : "test add line 2",
+  line3 : "test add third line",
+  city : "test city",
+  county : "test county",
+  zip : "TEST21",
+  country : "UNITED TEST COUNTRY"
+},
+requirements: [{
+  name: "passport" ,
+  quantity_recieved: 1,
+  status: [{
+    omitted : false,
+    recieved : false,
+    comment : "awaiting docs"
+  }]
+}],
+tracking : [{
+  date : Date.now(),
+  status: "initiated" // initiated, recieved, intention to lodge etc...
+}],
+closed: false,
+contact : ["5c3ee21e8910d4572a56d613"],
+person : ["5c327a5589ecdd4af7821c6a"],
+invoice : ["5c46278502423150314ad57b"]
+}, function (err, small) {
+  if (err) {console.log(err)} else {
+    console.log(small);
+  }
+  // saved!
+});
+*/
+/*
 const invoice = require("./models/invoice");
 invoice.create({
   address : {

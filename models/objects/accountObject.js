@@ -9,6 +9,16 @@ const account = {
   },
   first_name: String,
   surname: String,
+  address : [{
+    _id: false,
+    line1: String,
+    line2 : String,
+    line3 : String,
+    city : String,
+    county : String,
+    zip : String,
+    country : String
+  }],
   company : [{ type: Schema.Types.ObjectId, ref: 'company' }],
   people : [{ type: Schema.Types.ObjectId, ref: 'person' }],
   invoices: [{ type: Schema.Types.ObjectId, ref: 'invoice' }],

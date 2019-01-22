@@ -5,6 +5,7 @@ const company = {
 
   name : String,
   address : [{
+    _id: false,
     line1: String,
     line2 : String,
     line3 : String,

@@ -26,24 +26,28 @@ module.exports = {
       filename: 'index.html',
       excludeAssets: [/^((?!index).)*$/],
       title: 'Index',
+      favicon: 'src/images/favicon.ico',
       template: 'views/vuetest.pug'
     }),
     new HtmlWebpackPlugin({
       filename: 'consultant.html',
       excludeAssets: [/^((?!consultant).)*$/],
       title: 'Consultant',
+      favicon: 'src/images/favicon.ico',
       template: 'views/vuetest.pug'
     }),
     new HtmlWebpackPlugin({
       filename: 'client.html',
       excludeAssets: [/^((?!client).)*$/],
       title: 'Client',
+      favicon: 'src/images/favicon.ico',
       template: 'views/vuetest.pug'
     }),
     new HtmlWebpackPlugin({
       filename: 'admin.html',
       excludeAssets: [/^((?!admin).)*$/],
       title: 'Admin',
+      favicon: 'src/images/favicon.ico',
       template: 'views/vuetest.pug'
     }),
 
