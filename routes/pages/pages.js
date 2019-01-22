@@ -4,10 +4,17 @@ const pages = function(express) {
   const fileDirectory = path.resolve(__dirname, '../../dist/');
   router.route(['/', '/:path'])
     .all(function(req, res, next) {
-      if(!req.params.path){
+      if (!req.params.path) {
         req.params.path = "index";
       }
-      res.sendFile(req.params.path + '.html', {root: fileDirectory}, (err) => {
+      let path = req.params.path;
+      let pathSplit = path.split(".")
+      if (pathSplit.length === 1) {
+        path = req.params.path + '.html';
+      }
+      res.sendFile(path, {
+        root: fileDirectory
+      }, (err) => {
         if (err) {
           next(err)
         };

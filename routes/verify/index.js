@@ -10,12 +10,17 @@ const verify = function(express) {
     "/index",
     "/login",
     "/register",
-    "/logoff"
+    "/logoff",
+    "/favicon.ico"
   ]
 
-  router.route('/*')
+  router.route(['/js/:jsfile', '/css/:cssfile', '/*'])
     .all(function(req, res, next) {
-      let = safe = _.indexOf(paths, req.path)
+      let path = req.path;
+      if (req.params.jsfile || req.params.cssfile){
+        path = "/"
+      }
+      let = safe = _.indexOf(paths, path)
       if (safe !== -1){
       next()
       } else {
