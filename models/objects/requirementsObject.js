@@ -4,6 +4,7 @@
 const requirements = {
   country_from: String,
   country_to : String,
+  purpose: String,
   requirement: [{
     _id: false,
     name: String,
