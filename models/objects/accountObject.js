@@ -21,7 +21,8 @@ const account = {
   }],
   company : [{ type: Schema.Types.ObjectId, ref: 'company' }],
   people : [{ type: Schema.Types.ObjectId, ref: 'person' }],
-  invoices: [{ type: Schema.Types.ObjectId, ref: 'invoice' }],
+  order: [{ type: Schema.Types.ObjectId, ref: 'order' }],
+  invoice: [{ type: Schema.Types.ObjectId, ref: 'invoice' }],
   permissions: {
     case : ["c", "r", "u", "d"],
     person_country : ["c", "r", "u", "d"],

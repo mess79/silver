@@ -47,10 +47,6 @@ const order = {
     }],
   }],
   closed: Boolean,
-  contact: [{
-    type: Schema.Types.ObjectId,
-    ref: 'account'
-  }],
   person: [{
     type: Schema.Types.ObjectId,
     ref: 'person'
@@ -58,6 +54,10 @@ const order = {
   invoice: [{
     type: Schema.Types.ObjectId,
     ref: 'invoice'
+  }],
+  account: [{
+    type: Schema.Types.ObjectId,
+    ref: 'account'
   }]
 }
 

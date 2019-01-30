@@ -6,25 +6,132 @@ const cookieParser = require("cookie-parser")
 const routes = require("./routes")(express, app);
 const path = require("path");
 
-
-//const errors = require("./routes/errors")(app);
-
 //setters and users
 app.set('views', './views')
 app.set('view engine', 'pug')
 app.use(express.static(__dirname + '/public'))
 app.use(express.json());
-app.use(express.urlencoded({extended : true}));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(cookieParser());
 
 routes();
 
-app.get(['/test'], function (req, res) {
+app.get(['/test'], function(req, res) {
   res.render('test')
 })
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
 
+/*
+const requirements = require("./models/requirements");
+requirements.create({
+  country_from: "GBR",
+  country_to: "CHN",
+  category: [{
+    purpose: "Business",
+    requirement: [{
+      origin : ["5c52025cfba160407062c19f"],
+      name: "Passport",
+      link: false,
+      quantity: 1,
+      icon: false,
+      description: "#pages pages spare and #validityMonths months left after travel",
+      variable: ["pages", "validityMonths"],
+      variableInput: {
+        pages : 2,
+        validityMonths: 6
+      },
+      nationality: {
+        exclude : true,
+        countryCodes: ["ESP", "ITA"]
+      }
+    },
+    {
+      origin : ["5c515ecc6d0c353dba975830"],
+      name: "Passport",
+      link: false,
+      quantity: 1,
+      icon: false,
+      description: "#pages pages spare and #validityMonths months left after travel",
+      variable: ["pages", "validityMonths"],
+      variableInput: {
+        pages : 1,
+        validityMonths: 3
+      },
+      nationality: {
+        exclude : false,
+        countryCodes: ["ESP", "ITA"]
+      }
+    }]
+  },
+  {
+    purpose: "Tourist",
+    requirement: [{
+      origin : ["5c52025cfba160407062c19f"],
+      name: "Passport",
+      link: false,
+      quantity: 1,
+      icon: false,
+      description: "#pages pages spare and #validityMonths months left after travel",
+      variable: ["pages", "validityMonths"],
+      variableInput: {
+        pages : 2,
+        validityMonths: 6
+      },
+      nationality: {
+        exclude : true,
+        countryCodes: ["ESP", "ITA"]
+      }
+    },
+    {
+      origin : ["5c515ecc6d0c353dba975830"],
+      name: "Passport",
+      link: false,
+      quantity: 1,
+      icon: false,
+      description: "#pages pages spare and #validityMonths months left after travel",
+      variable: ["pages", "validityMonths"],
+      variableInput: {
+        pages : 1,
+        validityMonths: 3
+      },
+      nationality: {
+        exclude : false,
+        countryCodes: ["ESP", "ITA"]
+      }
+    }]
+  }]
+  },
+
+  function(err, small) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(small);
+    }
+  })
+*/
+/*
+const requirementsItem = require("./models/requirementsItem");
+requirementsItem.create({
+    name: "Passport",
+    link: false,
+    quantity: 1,
+    icon: false,
+    description: "#pages pages spare and #validityMonths months left after travel",
+    variable: ["pages", "validityMonths"]
+  },
+
+  function(err, small) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(small);
+    }
+  })
+*/
 /*
 const order = require("./models/order");
 order.create({
@@ -51,7 +158,7 @@ tracking : [{
   status: "initiated" // initiated, recieved, intention to lodge etc...
 }],
 closed: false,
-contact : ["5c3ee21e8910d4572a56d613"],
+account : ["5c3ee21e8910d4572a56d613"],
 person : ["5c327a5589ecdd4af7821c6a"],
 invoice : ["5c46278502423150314ad57b"]
 }, function (err, small) {

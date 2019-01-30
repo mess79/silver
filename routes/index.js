@@ -7,6 +7,7 @@ const routes = function(express, app) {
     auth: require("./authentication")(express),
     pages : require("./pages")(express),
     js: require("./js")(express),
+    order: require("./orders")(express),
     errors: require("./errors")
   }
   return function() {
