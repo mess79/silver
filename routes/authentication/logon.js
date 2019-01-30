@@ -1,6 +1,7 @@
 const auth = require("../lib/auth");
 const account = require("../../models/account");
 const jwt = require("../lib/jwt");
+const csrf = require('csrf')
 
 const logon = function(express) {
   const router = express.Router();
@@ -10,11 +11,11 @@ const logon = function(express) {
       res.render('login')
     })
     .post(function(req, res, next) {
-      const send = function(xhr, auth, message, data, res){
-        if (req.xhr){
+      const send = function(xhr, auth, message, data, res) {
+        if (req.xhr) {
           res.json({
             auth: auth,
-            message : message,
+            message: message,
             data: data
           })
         } else {
@@ -32,26 +33,30 @@ const logon = function(express) {
               console.log("no user found: " + req.body.username)
             } else {
               auth.verify(req.body.password, result.password).then((verified) => {
-                //console.log(verified);
                 if (verified) {
                   let options = {
                     audience: req.headers.host
                   }
                   let payload = {
                     subject: result._id,
-                    permissions : result.permissions,
-                    company : result.company,
-                    people : result.person
+                    permissions: result.permissions,
+                    company: result.company,
+                    people: result.person
                   }
-                  res.cookie('authorization', jwt.sign(payload, options), {
-                    expires: new Date(Date.now() + 1800000),
+                  let jwt_token = jwt.sign(payload, options)
+                  res.cookie('authorization', jwt_token, {
+                    expires: new Date(Date.now() + 3600000),
                     httpOnly: true
                   });
+
+                  let csrfTokens = new csrf()
+                  let token = csrfTokens.create(String(payload.subject))
+                  res.cookie('csrf', token, {
+                    expires: new Date(Date.now() + 3600000),
+                  });
                   send(req.xhr, true, "logged on", result, res)
-                  //res.render('login')
                 } else {
                   send(req.xhr, false, "login failed", false, res)
-                  //res.render('login')
                 }
               })
             }
@@ -59,11 +64,9 @@ const logon = function(express) {
           .catch(function(err) {
             console.log(err)
             send(req.xhr, false, "login failed", false, res)
-            //res.render('login')
           })
       } else {
         send(req.xhr, false, "login failed", false, res)
-        //res.render('login')
       }
     })
 

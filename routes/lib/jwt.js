@@ -24,7 +24,7 @@ module.exports = {
       issuer:  options.issuer,
       //subject:  options.subject,
       audience:  options.audience,
-      expiresIn:  "30d",    // 30 days validity
+      expiresIn:  "1h",    // 30 days validity
       algorithm:  "RS256"
   };
 
@@ -47,7 +47,7 @@ verify: (token, option) => {
       issuer:  option.issuer,
       //subject:  option.subject,
       audience:  option.audience,
-      expiresIn:  "30d",
+      expiresIn:  "1h",
       algorithm:  ["RS256"]
   };
     //console.log(verifyOptions);

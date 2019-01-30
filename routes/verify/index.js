@@ -1,6 +1,8 @@
 // verify if user is logged on middleware
 const fs = require('fs');
 const jwt = require('../lib/jwt');
+const csrf = require('csrf');
+
 const verify = function(express) {
   const router = express.Router();
   const _ = require("lodash");
@@ -17,21 +19,48 @@ const verify = function(express) {
   router.route(['/js/:jsfile', '/css/:cssfile', '/*'])
     .all(function(req, res, next) {
       let path = req.path;
-      if (req.params.jsfile || req.params.cssfile){
+      if (req.params.jsfile || req.params.cssfile) {
         path = "/"
       }
       let = safe = _.indexOf(paths, path)
-      if (safe !== -1){
-      next()
+      if (safe !== -1) {
+        next()
       } else {
         let options = {
           audience: req.headers.host
         }
         let user = jwt.verify(req.cookies.authorization, options)
-        if (user) {
-          //console.log(user);
-          //console.log(Date.now()/1000);
-          //console.log("verified user")
+        let csrfTokens = new csrf()
+        let csrfCheck = csrfTokens.verify(req.cookies.authorization, req.cookies.csrf)
+        if (user && csrfCheck) {
+
+          let timeLeft = user.exp - Date.now() / 1000;
+          //if jwt expires within the next 15 mins - set a new ne
+          console.log(timeLeft);
+          if (timeLeft < 900) {
+
+            let options = {
+              audience: user.aud
+            }
+            let payload = {
+              subject: user.subject,
+              permissions: user.permissions,
+              company: user.company,
+              people: user.person
+            }
+            let jwt_token = jwt.sign(payload, options)
+
+            res.cookie('authorization', jwt_token, {
+              expires: new Date(Date.now() + 3600000),
+              httpOnly: true
+            });
+
+            let token = csrfTokens.create(payload.subject)
+            res.cookie('csrf', token, {
+              expires: new Date(Date.now() + 3600000),
+            });
+            console.log("JWT replaced")
+          }
           next()
         } else {
           if (req.xhr) {
@@ -41,7 +70,6 @@ const verify = function(express) {
             });
           } else {
             console.log("redirect");
-            //res.redirect("./login")
             res.status(500).send("Unauthorized");
           }
         }

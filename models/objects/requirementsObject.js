@@ -3,15 +3,18 @@
 
 const requirements = {
   country_from: String,
-  country_to : String,
-  purpose: String,
-  requirement: [{
+  country_to: String,
+  category: [{
     _id: false,
-    name: String,
-    link: String,
-    quantity: Number,
-    icon: String,
-    description : String
+    purpose: String,
+    requirement: [{
+      _id: false,
+      name: String,
+      link: String,
+      quantity: Number,
+      icon: String,
+      description: String
+    }]
   }]
 }
 
