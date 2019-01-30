@@ -1,6 +1,6 @@
 // verify if user is logged on middleware
 const fs = require('fs');
-const jwt = require('../lib/jwt');
+const jwt = require('../../lib/auth/jwt');
 const csrf = require('csrf');
 
 const verify = function(express) {

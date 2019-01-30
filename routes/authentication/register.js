@@ -1,6 +1,6 @@
-const auth = require("../lib/auth");
+const auth = require("../../lib/auth/auth");
 const account = require("../../models/account");
-const jwt = require("../lib/jwt");
+const jwt = require("../../lib/auth/jwt");
 
 const register = function(express) {
   const router = express.Router();

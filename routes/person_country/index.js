@@ -1,7 +1,7 @@
 const routes = function(express) {
   const router = express.Router();
-  const lib = require("../../lib");
-  const path = require("../lib/params");
+  const lib = require("../../lib/person");
+  const path = require("../../lib/util/params");
 
   router.route(['/person_country', "/person_country/:options/*"])
     .all(function(req, res, next) {
