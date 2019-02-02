@@ -32,12 +32,12 @@ const verify = function(express) {
         let user = jwt.verify(req.cookies.authorization, options)
         let csrfTokens = new csrf()
         let csrfCheck = csrfTokens.verify(user.subject, req.cookies.csrf)
-        console.log(csrfCheck);
+        //console.log(csrfCheck);
         if (user && csrfCheck) {
           req.user = user;
           let timeLeft = user.exp - Date.now() / 1000;
           //if jwt expires within the next 15 mins - set a new ne
-          console.log(timeLeft);
+          //console.log(timeLeft);
           if (timeLeft < 900) {
 
             let options = {

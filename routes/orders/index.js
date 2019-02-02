@@ -1,43 +1,66 @@
 //const path = require("path");
 
+const lib = require("../../lib/order");
+
 const orders = function(express) {
   const router = express.Router();
 
-  const search = function(req) {
+  /*const search = function(req) {
     return new Promise((resolve, reject) => {
-      console.log(req.params.id + " " + req.user.subject)
-      if (req.params.id === req.user.subject) {
-        resolve(true)
-      } else {
-        resolve(false)
-      }
+      lib.retrieve(req)
+        .then(function(result) {
+          resolve(result)
+        })
+        .catch(function(err) {
+          reject(err);
+        })
     })
-  }
+  }*/
 
   router.route("/order/:id")
     .get(function(req, res, next) {
-      console.log(req.user.subject);
-
-      search(req)
-      .then(function(result) {
-        console.log("GET responded to");
-        res.json({auth: result});
-      })
-      .catch(function(err){
-        console.log(err)
-        res.json({error: err.message});
-      })
-
-      //res.send("")
+      lib.retrieve(req)
+        .then(function(result) {
+          res.json(result)
+        })
+        .catch(function(err) {
+          res.json({
+            error: err.message
+          });
+        })
     })
     .post(function(req, res, next) {
-
+      lib.update(req)
+        .then(function(result) {
+          res.json(result)
+        })
+        .catch(function(err) {
+          res.json({
+            error: err.message
+          });
+        })
     })
     .put(function(req, res, next) {
-
+      lib.create(req)
+        .then(function(result) {
+          res.json(result)
+        })
+        .catch(function(err) {
+          res.json({
+            error: err.message
+          });
+        })
     })
     .delete(function(req, res, next) {
-
+      lib.delete(req)
+        .then(function(result) {
+          res.json(result)
+        })
+        .catch(function(err) {
+          res.json({
+            error: err.message
+          });
+        })
     })
   return {
     orders: router
