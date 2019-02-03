@@ -8,7 +8,7 @@ const logon = function(express) {
 
   router.route(['/logon', '/login'])
     .get(function(req, res, next) {
-      res.render('login')
+      res.render('login/login')
     })
     .post(function(req, res, next) {
       const send = function(xhr, auth, message, data, res) {
@@ -19,7 +19,7 @@ const logon = function(express) {
             data: data
           })
         } else {
-          res.render('login');
+          res.render('login/login');
         }
       }
 

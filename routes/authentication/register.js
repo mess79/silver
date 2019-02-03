@@ -7,7 +7,7 @@ const register = function(express) {
 
   router.route('/register')
     .get(function(req, res, next) {
-      res.render('register')
+      res.render('login/register')
     })
     .post(function(req, res, next) {
 
@@ -19,7 +19,7 @@ const register = function(express) {
             data: data
           })
         } else {
-          res.render('register');
+          res.render('login/register');
         }
       }
 
@@ -44,17 +44,14 @@ const register = function(express) {
                         httpOnly: true
                       });
                       send(req.xhr, true, "registered and logged on", result, res)
-                      //res.render('register')
                     })
                 } else {
                   send(req.xhr, false, "user already exists", false, res)
-                  //res.render('register')
                 }
               })
               .catch(function(err) {
                 console.log(err)
                 send(req.xhr, false, "error registering user", false, res)
-                //res.render('register')
               })
           })
       }

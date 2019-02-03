@@ -4,7 +4,7 @@ const all = function logErrors(err, req, res, next) {
   } else {
     res.status(500)
   }
-  res.render('error', {
+  res.render('error/error', {
     error: err
   })
 }

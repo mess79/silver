@@ -22,26 +22,7 @@ app.get(['/test'], function(req, res) {
   res.render('test')
 })
 
-app.listen(port, () => console.log(`App listening on port ${port}!`))
-
-const Email = require('email-templates');
-const emailConfig = require("./config").email;
-//console.log(emailConfig);
-const email = new Email(emailConfig);
-
-email
-  .send({
-    template: 'passwordReset',
-    message: {
-      to: 'mess79@gmail.com'
-    },
-    locals: {
-      name: 'Sammy C'
-
-    }
-  })
-  .then(console.log)
-  .catch(console.error);
+app.listen(port, () => console.log(`App listening on port ${port}!`));
 
 /*
 const requirements = require("./models/requirements");

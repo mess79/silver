@@ -2,6 +2,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const account = {
+  active: {
+    Type: Boolean,
+    default : false
+  },
+  activation: {
+    hash: String,
+    exp: Date
+  },
+  reset: {
+    hash: String,
+    exp : Date
+  },
   username: String,
   password: {
     salt: String,

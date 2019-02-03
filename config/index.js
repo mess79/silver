@@ -1,5 +1,6 @@
 const configs = {
-  email: require("./email")
+  email: require("./email"),
+  url: require("./url")
 }
 
 module.exports = configs

@@ -50,6 +50,27 @@ module.exports = {
       favicon: 'src/images/favicon.ico',
       template: 'views/vuetest.pug'
     }),
+    new HtmlWebpackPlugin({
+      filename: 'reset_request.html',
+      excludeAssets: [/^((?!reset_request).)*$/],
+      title: 'Reset Request',
+      favicon: 'src/images/favicon.ico',
+      template: 'views/login/reset_request.pug'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'reset_submit.html',
+      excludeAssets: [/^((?!reset_submit).)*$/],
+      title: 'Reset Request Submitted',
+      favicon: 'src/images/favicon.ico',
+      template: 'views/login/reset_submit.pug'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'reset_password.html',
+      excludeAssets: [/^((?!reset_password).)*$/],
+      title: 'New password submittion',
+      favicon: 'src/images/favicon.ico',
+      template: 'views/login/reset_password.pug'
+    }),
 
     new HtmlWebpackExcludeAssetsPlugin()
   ],

@@ -13,6 +13,9 @@ const verify = function(express) {
     "/login",
     "/register",
     "/logoff",
+    "/reset/*",
+    "/reset_submit",
+    "/reset_request",
     "/favicon.ico"
   ]
 
@@ -22,7 +25,13 @@ const verify = function(express) {
       if (req.params.jsfile || req.params.cssfile) {
         path = "/"
       }
-      let = safe = _.indexOf(paths, path)
+
+      let pathSplit = path.split("/")
+      if(pathSplit.length > 2){
+        pathSplit[1] = pathSplit[1] + "/*";
+      }
+      path = "/" + pathSplit[1]
+      let safe = _.indexOf(paths, path)
       if (safe !== -1) {
         next()
       } else {

@@ -3,8 +3,8 @@ const emailConfig = {
     from: 'mess79@gmail.com'
   },
   // uncomment below to send emails in development/test env:
-  send: true,
-  preview: false,
+  //send: true,
+  preview: true,
   transport: {
     jsonTransport: true
   }

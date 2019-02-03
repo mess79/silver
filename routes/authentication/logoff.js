@@ -6,7 +6,7 @@ const logoff = function(express) {
       res.clearCookie('authorization')
       res.clearCookie('csrf')
       //res.clearCookie('sessionID')
-      res.render('logoff')
+      res.render('login/logoff')
     })
     .post(function(req, res, next) {
       res.clearCookie('authorization')
@@ -18,7 +18,7 @@ const logoff = function(express) {
           message : "Logged off"
         })
       } else {
-        res.render('logoff')
+        res.render('login/logoff')
       }
     })
   return router;
