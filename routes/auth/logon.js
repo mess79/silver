@@ -1,27 +1,21 @@
 const auth = require("../../lib/auth/auth");
 const account = require("../../models/account");
 const jwt = require("../../lib/auth/jwt");
-const csrf = require('csrf')
+const csrf = require('csrf');
+const send = require('../../lib/util/send');
 
 const logon = function(express) {
   const router = express.Router();
-
   router.route(['/logon', '/login'])
     .get(function(req, res, next) {
-      res.render('login/login')
+      send(req, res, next, {
+        message: "login page",
+        data: false,
+        url: "auth/login"
+      })
+      //res.render('auth/login')
     })
     .post(function(req, res, next) {
-      const send = function(xhr, auth, message, data, res) {
-        if (req.xhr) {
-          res.json({
-            auth: auth,
-            message: message,
-            data: data
-          })
-        } else {
-          res.render('login/login');
-        }
-      }
 
       if (req.body.username && req.body.password) {
         account.findOne({
@@ -54,19 +48,35 @@ const logon = function(express) {
                   res.cookie('csrf', token, {
                     expires: new Date(Date.now() + 3600000),
                   });
-                  send(req.xhr, true, "logged on", result, res)
+                  send(req, res, next, {
+                    message: "logged on",
+                    data: result,
+                    url: "auth/login"
+                  })
                 } else {
-                  send(req.xhr, false, "login failed", false, res)
+                  send(req, res, next, {
+                    message: "login failed",
+                    data: false,
+                    url: "auth/login"
+                  })
                 }
               })
             }
           })
           .catch(function(err) {
             console.log(err)
-            send(req.xhr, false, "login failed", false, res)
+            send(req, res, next, {
+              message: "login failed",
+              data: false,
+              url: "auth/login"
+            })
           })
       } else {
-        send(req.xhr, false, "login failed", false, res)
+        send(req, res, next, {
+          message: "login failed",
+          data: false,
+          url: "auth/login"
+        })
       }
     })
 

@@ -51,26 +51,55 @@ module.exports = {
       template: 'views/vuetest.pug'
     }),
     new HtmlWebpackPlugin({
-      filename: 'reset_request.html',
+      filename: 'auth/reset_request.html',
       excludeAssets: [/^((?!reset_request).)*$/],
       title: 'Reset Request',
       favicon: 'src/images/favicon.ico',
-      template: 'views/login/reset_request.pug'
+      template: 'views/auth/reset_request.pug'
     }),
     new HtmlWebpackPlugin({
-      filename: 'reset_submit.html',
-      excludeAssets: [/^((?!reset_submit).)*$/],
+      filename: 'auth/reset_request_submitted.html',
+      excludeAssets: [/^((?!reset_request_submitted).)*$/],
       title: 'Reset Request Submitted',
       favicon: 'src/images/favicon.ico',
-      template: 'views/login/reset_submit.pug'
+      template: 'views/auth/reset_request_submitted.pug'
     }),
     new HtmlWebpackPlugin({
-      filename: 'reset_password.html',
+      filename: 'auth/reset_password.html',
       excludeAssets: [/^((?!reset_password).)*$/],
       title: 'New password submittion',
       favicon: 'src/images/favicon.ico',
-      template: 'views/login/reset_password.pug'
+      template: 'views/auth/reset_password.pug'
     }),
+    new HtmlWebpackPlugin({
+      filename: 'auth/reset_password_submitted.html',
+      excludeAssets: [/^((?!reset_password_submitted).)*$/],
+      title: 'New password submitted',
+      favicon: 'src/images/favicon.ico',
+      template: 'views/auth/reset_password_submitted.pug'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'auth/register.html',
+      excludeAssets: [/^((?!register).)*$/],
+      title: 'New User',
+      favicon: 'src/images/favicon.ico',
+      template: 'views/auth/register.pug'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'auth/logoff.html',
+      excludeAssets: [/^((?!logoff).)*$/],
+      title: 'Logoff',
+      favicon: 'src/images/favicon.ico',
+      template: 'views/auth/logoff.pug'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'auth/login.html',
+      excludeAssets: [/^((?!login).)*$/],
+      title: 'Login',
+      favicon: 'src/images/favicon.ico',
+      template: 'views/auth/login.pug'
+    }),
+
 
     new HtmlWebpackExcludeAssetsPlugin()
   ],

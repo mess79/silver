@@ -1,28 +1,21 @@
 const auth = require("../../lib/auth/auth");
 const account = require("../../models/account");
 const jwt = require("../../lib/auth/jwt");
+const send = require('../../lib/util/send')
 
 const register = function(express) {
   const router = express.Router();
 
   router.route('/register')
     .get(function(req, res, next) {
-      res.render('login/register')
+      send(req, res, next, {
+        message: "register page",
+        data: false,
+        url: "auth/register"
+      })
+      //res.render('auth/register')
     })
     .post(function(req, res, next) {
-
-      const send = function(xhr, auth, message, data, res){
-        if (req.xhr){
-          res.json({
-            auth: auth,
-            message : message,
-            data: data
-          })
-        } else {
-          res.render('login/register');
-        }
-      }
-
       if (req.body.password) {
         auth.create(req.body.password)
           .then((password) => {
@@ -43,20 +36,31 @@ const register = function(express) {
                         expires: new Date(Date.now() + 900000),
                         httpOnly: true
                       });
-                      send(req.xhr, true, "registered and logged on", result, res)
+                      send(req, res, next, {
+                        message: "registered and logged on",
+                        data: result,
+                        url: "auth/register"
+                      })
                     })
                 } else {
-                  send(req.xhr, false, "user already exists", false, res)
+                  send(req, res, next, {
+                    message: "user already exists",
+                    data: false,
+                    url: "auth/register"
+                  })
                 }
               })
               .catch(function(err) {
                 console.log(err)
-                send(req.xhr, false, "error registering user", false, res)
+                send(req, res, next, {
+                  message: "error registering user",
+                  data: false,
+                  url: "auth/register"
+                })
               })
           })
       }
     })
-
   return router;
 }
 

@@ -1,3 +1,5 @@
+const send = require('../../lib/util/send')
+
 const logoff = function(express) {
   const router = express.Router();
   //const _ = require("lodash");
@@ -6,20 +8,21 @@ const logoff = function(express) {
       res.clearCookie('authorization')
       res.clearCookie('csrf')
       //res.clearCookie('sessionID')
-      res.render('login/logoff')
+      //res.render('auth/logoff')
+      send(req, res, next, {
+        message: "logged off",
+        data: false,
+        url: "auth/logoff"
+      })
     })
     .post(function(req, res, next) {
       res.clearCookie('authorization')
       res.clearCookie('csrf')
-      //res.clearCookie('sessionID')
-      if (req.xhr) {
-        res.json({
-          auth: false,
-          message : "Logged off"
-        })
-      } else {
-        res.render('login/logoff')
-      }
+      send(req, res, next, {
+        message: "logged off",
+        data: false,
+        url: "auth/logoff"
+      })
     })
   return router;
 }

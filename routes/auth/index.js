@@ -6,8 +6,8 @@ const auth = function(express) {
     register: require("./register")(express),
     logon: require("./logon")(express),
     logout: require("./logoff")(express),
-    reset: require("./reset")(express),
     resetSubmit: require("./resetSubmit")(express),
+    resetRequest: require("./resetRequest")(express),
     activate: require("./activate")(express)
   }
 }
