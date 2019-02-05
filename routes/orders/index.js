@@ -5,18 +5,6 @@ const lib = require("../../lib/order");
 const orders = function(express) {
   const router = express.Router();
 
-  /*const search = function(req) {
-    return new Promise((resolve, reject) => {
-      lib.retrieve(req)
-        .then(function(result) {
-          resolve(result)
-        })
-        .catch(function(err) {
-          reject(err);
-        })
-    })
-  }*/
-
   router.route("/order/:id")
     .get(function(req, res, next) {
       lib.retrieve(req)

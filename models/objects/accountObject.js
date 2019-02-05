@@ -19,6 +19,7 @@ const account = {
     salt: String,
     hash: String
   },
+  csrf_hash: String, 
   first_name: String,
   surname: String,
   address : [{
@@ -35,13 +36,14 @@ const account = {
   people : [{ type: Schema.Types.ObjectId, ref: 'person' }],
   order: [{ type: Schema.Types.ObjectId, ref: 'order' }],
   invoice: [{ type: Schema.Types.ObjectId, ref: 'invoice' }],
-  permissions: {
+  role: String,
+  /*permissions: {
     case : ["c", "r", "u", "d"],
     person_country : ["c", "r", "u", "d"],
     account : ["c", "r", "u", "d"],
     invoice : ["c", "r", "u", "d"],
     company : ["c", "r", "u", "d"]
-  }
+  }*/
 }
 
 module.exports = account;

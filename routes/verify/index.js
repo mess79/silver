@@ -40,7 +40,7 @@ const verify = function(express) {
         }
         let user = jwt.verify(req.cookies.authorization, options)
         let csrfTokens = new csrf()
-        let csrfCheck = csrfTokens.verify(user.subject, req.cookies.csrf)
+        let csrfCheck = csrfTokens.verify(user.hash, req.cookies.csrf)
         //console.log(csrfCheck);
         if (user && csrfCheck) {
           req.user = user;
@@ -65,7 +65,7 @@ const verify = function(express) {
               httpOnly: true
             });
 
-            let token = csrfTokens.create(payload.subject)
+            let token = csrfTokens.create(payload.hash)
             res.cookie('csrf', token, {
               expires: new Date(Date.now() + 3600000),
             });
