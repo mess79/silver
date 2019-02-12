@@ -2,6 +2,7 @@
   "name": "autofiller",
   "version": "1.0.0",
   "description": "Test for data import and export",
+  "repository": "https://github.com/mess79/silver.git",
   "main": "app.js",
   "scripts": {
     "test": "mocha",
@@ -11,7 +12,7 @@
   "author": "Sam Carlton",
   "license": "ISC",
   "dependencies": {
-    "argon2": "^0.20.0",
+    "argon2": "^0.17.2",
     "chai": "^4.2.0",
     "cookie-parser": "^1.4.3",
     "crypto-random-string": "^1.0.0",
