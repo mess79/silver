@@ -5,7 +5,7 @@ echo ""
 #echo "Running stock build:"
 #${STI_SCRIPTS_PATH}/assemble
 #echo "Fixing the mess:"
-chmod 755 /etc/pki
+#chmod 755 /etc/pki
 #node -v
 #gcc --version
 #CXX -v
