@@ -2,7 +2,7 @@
 echo "Custom scripts before assembling:"
 echo ""
 
-sudo yum install gcc
+yum install gcc
 
 echo ""
 
