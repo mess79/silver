@@ -2,9 +2,9 @@
 echo "Custom scripts before assembling:"
 echo ""
 
-echo "Running stock build:"
-${STI_SCRIPTS_PATH}/assemble
-echo "Fixing the mess:"
+#echo "Running stock build:"
+#${STI_SCRIPTS_PATH}/assemble
+#echo "Fixing the mess:"
 chmod 755 /etc/pki
 #node -v
 #gcc --version
