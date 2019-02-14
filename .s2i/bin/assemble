@@ -3,7 +3,8 @@ echo "Custom scripts before assembling:"
 echo ""
 
 yum install gcc
-gcc --version
+npm install -g node-gyp
+CXX=g++-6 npm install argon2
 
 /usr/libexec/s2i/assemble
 rc=$?
