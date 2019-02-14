@@ -3,11 +3,11 @@ echo "Custom scripts before assembling:"
 echo ""
 
 #node -v
-gcc -v
+gcc --version
 #CXX -v
 
-USER 1001
 
+fix-permissions ./
 #yum install gcc
 yum install Qt5Core
 yum install Qt5Gui
