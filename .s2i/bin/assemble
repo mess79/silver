@@ -3,14 +3,16 @@ echo "Custom scripts before assembling:"
 echo ""
 
 #node -v
-#gcc -v
+gcc -v
 #CXX -v
 
+USER 1001
+
 #yum install gcc
-#yum install Qt5Core
-#yum install Qt5Gui
-#yum install cairo
-#yum install poppler-qt5
+yum install Qt5Core
+yum install Qt5Gui
+yum install cairo
+yum install poppler-qt5
 echo ""
 
 /usr/libexec/s2i/assemble
