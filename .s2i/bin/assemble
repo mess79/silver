@@ -1,7 +1,11 @@
 #!/bin/bash
 echo "Custom scripts before assembling:"
 echo ""
-fix-permissions /opt/app-root
+
+echo "Running stock build:"
+${STI_SCRIPTS_PATH}/assemble
+echo "Fixing the mess:"
+chmod 755 /etc/pki
 #node -v
 #gcc --version
 #CXX -v
