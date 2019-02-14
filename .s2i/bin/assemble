@@ -2,9 +2,9 @@
 echo "Custom scripts before assembling:"
 echo ""
 
-node -v
-gcc -v
-CXX -v
+#node -v
+#gcc -v
+#CXX -v
 
 #yum install gcc
 #yum install Qt5Core
