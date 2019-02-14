@@ -2,8 +2,7 @@
 echo "Custom scripts before assembling:"
 echo ""
 
-/usr/libexec/s2i/generate-container-user
-
+set +e
 
 [ $(id -u) -ne 0 ] && CHECK_OWNER=" -uid $(id -u)"
 
