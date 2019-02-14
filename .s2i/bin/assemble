@@ -2,9 +2,8 @@
 echo "Custom scripts before assembling:"
 echo ""
 
-gcc -version
 yum install gcc
-gcc -version
+gcc --version
 
 /usr/libexec/s2i/assemble
 rc=$?
