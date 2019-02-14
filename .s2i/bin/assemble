@@ -1,17 +1,16 @@
 #!/bin/bash
 echo "Custom scripts before assembling:"
 echo ""
-set +e
-[[ -d ./var/lib/rpm ]] && chmod -R go+rw ./var/lib/rpm
-[[ -d ./etc/pki ]] && chmod -R go+rw ./etc/pki
-set -e
 
 node -v
-yum install gcc
-yum install Qt5Core
-yum install Qt5Gui
-yum install cairo
-yum install poppler-qt5
+gcc -v
+CXX -v
+
+#yum install gcc
+#yum install Qt5Core
+#yum install Qt5Gui
+#yum install cairo
+#yum install poppler-qt5
 echo ""
 
 /usr/libexec/s2i/assemble
