@@ -1,0 +1,22 @@
+#!/bin/bash
+echo "Custom scripts before assembling:"
+echo ""
+
+yum install gcc
+yum install Qt5Core
+yum install Qt5Gui
+yum install cairo
+yum install poppler-qt5
+
+echo ""
+
+/usr/libexec/s2i/run
+rc=$?
+
+if [ $rc -eq 0 ]; then
+    echo "Custom successful assembling"
+else
+    echo "custom failed assembling"
+fi
+
+exit $rc
