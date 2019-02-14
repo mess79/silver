@@ -1,14 +1,14 @@
 #!/bin/bash
 echo "Custom scripts before assembling:"
 echo ""
-
+set +e
 node -v
 yum install gcc
 yum install Qt5Core
 yum install Qt5Gui
 yum install cairo
 yum install poppler-qt5
-
+set -e
 echo ""
 
 /usr/libexec/s2i/assemble
