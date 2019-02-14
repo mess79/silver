@@ -7,7 +7,7 @@ echo ""
 echo $USER_ID
 
 #node -v
-gcc --version
+#gcc --version
 #CXX -v
 
 #yum install gcc
