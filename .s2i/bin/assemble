@@ -1,7 +1,11 @@
 #!/bin/bash
 echo "Custom scripts before assembling:"
 echo ""
-USER root
+
+set -e
+
+source /usr/libexec/s2i/env
+
 yum install gcc
 
 echo ""
@@ -14,5 +18,11 @@ if [ $rc -eq 0 ]; then
 else
     echo "custom failed assembling"
 fi
+
+echo "---> Cleaning up npm cache"
+rm -rf .npm
+
+echo "---> Fix permissions on app-root"
+fix-permissions /opt/app-root
 
 exit $rc
