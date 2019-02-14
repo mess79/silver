@@ -2,6 +2,8 @@
 echo "Custom scripts before assembling:"
 echo ""
 
+/usr/libexec/s2i/generate-container-user
+
 echo $USER_ID
 
 #node -v
