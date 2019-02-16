@@ -8,7 +8,13 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
+RUN apt-get update
+RUN apt-get install python3.6
 RUN npm install -g nodemon
+
+RUN python -v
+RUN node -v
+
 RUN npm install
 
 EXPOSE 8080
