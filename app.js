@@ -16,7 +16,7 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 
-routes();
+//routes();
 
 app.get(['/test'], function(req, res) {
   res.render('test')
