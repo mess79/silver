@@ -10,6 +10,19 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
+#RUN wget http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-linux-x64-5.7.0.run
+#RUN chmod +x qt-opensource-linux-x64-5.7.0.run
+#RUN ./qt-opensource-linux-x64-5.7.0.run
+#RUN apt-get install build-essential
+#RUN apt-get install libfontconfig1
+#RUN apt-get install mesa-common-dev
+
+#RUN apt-get update && apt-get install -y \
+#  Qt5Core \
+#  Qt5Gui \
+#  poppler-qt5 \
+#  cairo
+
 #RUN npm install -g nodemon
 #RUN python -v
 #RUN node -v
