@@ -1,6 +1,6 @@
 FROM node:10
 ENV NODE_ENV production
-
+USER 1001
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -13,7 +13,8 @@ COPY package*.json ./
 #RUN wget http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-linux-x64-5.7.0.run
 #RUN chmod +x qt-opensource-linux-x64-5.7.0.run
 #RUN ./qt-opensource-linux-x64-5.7.0.run
-#RUN apt-get install build-essential
+#docker build -t mess79/silver-docker .
+RUN apt-get install build-essential
 #RUN apt-get install libfontconfig1
 #RUN apt-get install mesa-common-dev
 
