@@ -1,6 +1,7 @@
 FROM node:10
 ENV NODE_ENV production
-USER 1001
+USER root
+
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -29,6 +30,8 @@ RUN apt-get install build-essential
 #RUN node -v
 
 RUN npm install
+
+USER 1001
 
 ENV PORT 80
 EXPOSE ${PORT}
