@@ -15,7 +15,7 @@ COPY package*.json ./
 #RUN chmod +x qt-opensource-linux-x64-5.7.0.run
 #RUN ./qt-opensource-linux-x64-5.7.0.run
 #docker build -t mess79/silver-docker .
-RUN apt-get install build-essential
+#RUN apt-get install build-essential
 #RUN apt-get install libfontconfig1
 #RUN apt-get install mesa-common-dev
 
