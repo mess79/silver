@@ -12,7 +12,8 @@
   "author": "Sam Carlton",
   "license": "ISC",
   "dependencies": {
-
+    "express": "4.16.4",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^1.0.0",
