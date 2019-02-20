@@ -1,3 +1,4 @@
+
 FROM node:10
 ENV NODE_ENV production
 USER root
@@ -9,7 +10,8 @@ WORKDIR /usr/src/app
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-COPY package*.json ./
+#COPY package*.json ./
+COPY *.* ./
 
 #RUN wget http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-linux-x64-5.7.0.run
 #RUN chmod +x qt-opensource-linux-x64-5.7.0.run
