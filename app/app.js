@@ -1,9 +1,9 @@
 //constants
 const express = require('express')
 const app = express()
-const port = 80
+const port = 8080
 const cookieParser = require("cookie-parser")
-const routes = require("./routes")(express, app);
+//const routes = require("./routes")(express, app);
 const path = require("path");
 
 //setters and users

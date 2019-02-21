@@ -7,7 +7,7 @@ USER root
 #RUN mkdir -p /usr/src/app
 #WORKDIR /usr/src/app
 
-ADD /App /App
+ADD /app /App
 WORKDIR /App
 RUN npm install
 
@@ -39,7 +39,7 @@ RUN npm install
 
 USER 1001
 
-ENV PORT 80
+ENV PORT 8080
 EXPOSE ${PORT}
 
 CMD ["npm", "start"]
