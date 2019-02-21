@@ -3,3 +3,6 @@ npm-debug.log
 archive
 .git
 .gitignore
+build.sh
+run.sh
+tidy.sh
