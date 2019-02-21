@@ -7,6 +7,10 @@ USER root
 #RUN mkdir -p /usr/src/app
 #WORKDIR /usr/src/app
 
+ADD /App /App
+WORKDIR /App
+RUN npm install
+
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
@@ -31,7 +35,7 @@ USER root
 #RUN python -v
 #RUN node -v
 
-RUN npm install
+#RUN npm install
 
 USER 1001
 
