@@ -4,14 +4,14 @@ ENV NODE_ENV production
 USER root
 
 # Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+#RUN mkdir -p /usr/src/app
+#WORKDIR /usr/src/app
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 #COPY package*.json ./
-COPY *.* ./
+#COPY *.* ./
 
 #RUN wget http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-linux-x64-5.7.0.run
 #RUN chmod +x qt-opensource-linux-x64-5.7.0.run
