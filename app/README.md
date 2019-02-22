@@ -1,3 +1,0 @@
-## Silver
-
-Case Management System
