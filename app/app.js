@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const port = 8080
 const cookieParser = require("cookie-parser")
-//const routes = require("./routes")(express, app);
+const routes = require("./routes")(express, app);
 const path = require("path");
 
 //setters and users
@@ -16,7 +16,7 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 
-//routes();
+routes();
 
 app.get(['/test'], function(req, res) {
   res.render('test')

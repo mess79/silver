@@ -12,8 +12,7 @@
   "author": "Sam Carlton",
   "license": "ISC",
   "dependencies": {
-  "argon2": "^0.20.0",
-  "pdf-fill-form": "^4.1.0",
+  
   },
   "devDependencies": {
     "clean-webpack-plugin": "^1.0.0",
