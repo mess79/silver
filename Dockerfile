@@ -1,5 +1,6 @@
 FROM node:10
 ENV NODE_ENV production
+ENV PORT 8080
 USER root
 
 # Create app directory
@@ -15,7 +16,6 @@ RUN npm install
 
 USER 1001
 
-ENV PORT 8080
 EXPOSE ${PORT}
 
 CMD ["npm", "start"]

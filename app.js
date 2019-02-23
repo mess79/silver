@@ -26,8 +26,9 @@ app.get(['/env'], function(req, res){
   let out = {
     NODE_ENV: process.env.NODE_ENV,
     OPENSHIFT: process.env.OPENSHIFT,
-    PORT: port//,
-    //IP: process.env.IP
+    PORT: port,
+    KEYS_PUBLIC:process.env.KEYS_PUBLIC,
+    KEYS_PRIVATE:process.env.KEYS_PRIVATE
   }
 
   res.json(out);
