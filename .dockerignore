@@ -1,3 +1,4 @@
+openshift_env.yaml
 node_modules
 webpack.config.js
 npm-debug.log
