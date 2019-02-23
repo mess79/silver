@@ -3,7 +3,7 @@ ENV NODE_ENV production
 USER root
 
 # Create app directory
-ADD /app /App
+ADD . /App
 WORKDIR /App
 
 RUN apt-get update && apt-get -y install curl \
