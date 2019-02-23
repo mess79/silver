@@ -9,6 +9,7 @@ const verify = function(express) {
 
   const paths = [
     "/",
+    "/env",
     "/index",
     "/login",
     "/register",

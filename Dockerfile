@@ -8,9 +8,8 @@ WORKDIR /App
 
 RUN apt-get update && apt-get -y install curl \
   qt5-default \
-  libcairo2-dev
-
-RUN apt-get -y install libpoppler-qt5-dev
+  libcairo2-dev \
+  libpoppler-qt5-dev
 
 RUN npm install
 

@@ -1,7 +1,13 @@
 //constants
+if (!process.env.NODE_ENV){
+  process.env.NODE_ENV = "development"
+}
+
+//console.log(process.env.NODE_ENV)
+
 const express = require('express')
 const app = express()
-const port = 8080
+const port = process.env.PORT || 8080;
 const cookieParser = require("cookie-parser")
 const routes = require("./routes")(express, app);
 const path = require("path");
@@ -16,13 +22,28 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 
-routes();
+app.get(['/env'], function(req, res){
+  let out = {
+    NODE_ENV: process.env.NODE_ENV,
+    OPENSHIFT: process.env.OPENSHIFT,
+    PORT: port//,
+    //IP: process.env.IP
+  }
+
+  res.json(out);
+})
 
 app.get(['/test'], function(req, res) {
   res.render('test')
 })
 
+routes();
+
+
+
 app.listen(port, () => console.log(`App listening on port ${port}!`));
+
+
 
 /*
 const requirements = require("./models/requirements");
