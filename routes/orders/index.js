@@ -5,7 +5,7 @@ const lib = require("../../lib/order");
 const orders = function(express) {
   const router = express.Router();
 
-  router.route("/order/:id")
+  router.route(["/order/:id", "/order"])
     .get(function(req, res, next) {
       lib.retrieve(req)
         .then(function(result) {

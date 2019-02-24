@@ -3,8 +3,6 @@ if (!process.env.NODE_ENV){
   process.env.NODE_ENV = "development"
 }
 
-//console.log(process.env.NODE_ENV)
-
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 8080;
@@ -22,6 +20,7 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 
+/*
 app.get(['/env'], function(req, res){
   let out = {
     NODE_ENV: process.env.NODE_ENV,
@@ -33,10 +32,11 @@ app.get(['/env'], function(req, res){
 
   res.json(out);
 })
-
+*/
 app.get(['/test'], function(req, res) {
   res.render('test')
 })
+
 
 routes();
 
