@@ -7,6 +7,51 @@ POST - create document,
 PUT - update document,
 DELETE - delete document,
 
+## Authorization
+
+### URL: /register
+
+#### POST
+
+Post is the only active verb for this route.  Expecting a payload in JSON
+
+Returns a JSON object with registration/login confirmation and user details
+
+### URL: /logon && /login
+
+#### POST
+
+Post is the only active verb for this route.  Expecting a payload in JSON
+
+Reurns a JSON object with login confirmation and user details
+
+### URL: /logoff
+
+#### POST
+#### GET
+
+Logs off, both post and get verbs will activate this.  No payload sent but JSON returned to confirm log off
+
+### URL /reset_request
+
+#### GET
+
+This will return the html for the reset request form
+
+#### POST
+
+This will submit the password reset request and send an email.  JSON is returned to confirmation
+
+### URL /reset/:user/:hash
+
+#### GET
+
+This will return the html for the password reset.  The user is the ID and the hash a cryptohash with a time limit
+
+#### POST
+
+This will submit the new password JSON is returned to confirmation. The user is the ID and the hash a cryptohash with a time limit
+
 ### URL: /person_country && /person_country/:options/*
 
 #### GET
