@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const url = process.env.MONGO || "'mongodb://root:vegetable@127.0.0.1:27017/autoFiller";
+const url = process.env.MONGO || "mongodb://root:vegetable@127.0.0.1:27017/autoFiller";
 const options = { useNewUrlParser: true };
 mongoose.set('useFindAndModify', false);
 
