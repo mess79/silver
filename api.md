@@ -6,6 +6,7 @@ GET - retrieve document,
 POST - update document,
 PUT - create document,
 DELETE - delete document,
+___
 
 ## Authorization
 
@@ -23,7 +24,7 @@ Returns a JSON object with registration/login confirmation and user details
 
 Post is the only active verb for this route.  Expecting a payload in JSON
 
-Reurns a JSON object with login confirmation and user details
+Returns a JSON object with login confirmation and user details
 
 ### URL: /logoff
 
@@ -51,6 +52,7 @@ This will return the html for the password reset.  The user is the ID and the ha
 #### POST
 
 This will submit the new password JSON is returned to confirmation. The user is the ID and the hash a cryptohash with a time limit
+___
 
 ## Person data
 
@@ -89,6 +91,7 @@ Delete a person
 `/person_country/options/id/<person document id>`
 
 returns a message to confirm deletion and the ID
+___
 
 ## Orders
 
