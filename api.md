@@ -110,17 +110,18 @@ Create a new order
 
 must send a JSON Payload.
 
-`{
+```javascript
+{
   account: <account holder Mongo ID from the user/jwt object>,
   person: [<[optional] if against a person or an array of people, can be empty if a new person to be created>]
   case_type :[<[optional, an array of case details]>
-      {
-        country_from: application country,
-        country_to: destination country,
-        purpose: case type
-      }
-    ]
-  }`
+    {
+      country_from: application country,
+      country_to: destination country,
+      purpose: case type
+    }
+  ]
+}```
 
 Will return a JSON object containing the order details including the order number or an error  
 
