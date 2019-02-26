@@ -5,14 +5,37 @@ html
     script(src="/js/jquery-3.3.1.min.js")
     script(src="/js/scripts.js")
   body
-    h1 Data upload tests
-    a#post(href='/api') Post
-    br
-    a#put(href='/api') Put
-    br
-    a#patch(href='/api') Patch
-    br
-    a#get(href='/api') Get
-    br
-    a#delete(href='/api') Delete
-    br
+    form
+      h1 Data upload tests
+      p collection
+      select#collection
+        option(value="person_country", selected) person_country
+        option(value="order") order
+        option(value="invoice") invoice
+        option(value="account") account
+        option(value="company") company
+      br
+      p id
+      input.id(type="text", value="5c327a5589ecdd4af7821c6a")
+      br
+      p Delete - id
+      input.delete_id(type="text", value="5c327a5589ecdd4af7821c6a")
+      br
+      p order #
+      input.order(type="text", value="10")
+      br
+      p account
+      input.account(type="text", value="5c3ee21e8910d4572a56d613")
+      br  
+      a.post(href='/api') Post
+      //br
+      a.put(href='/api') Put
+      //br
+      a.patch(href='/api') Patch
+      //br
+      a.get(href='/api') Get
+      //br
+      a.delete(href='/api') Delete
+      //br
+    div.url
+    textarea.output
