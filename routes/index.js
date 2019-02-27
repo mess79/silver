@@ -5,9 +5,9 @@ const routes = function(express, app) {
     verify: require('./verify')(express),
     person_country: require("./person_country")(express),
     auth: require("./auth")(express),
-    pages : require("./pages")(express),
     js: require("./js")(express),
     order: require("./orders")(express),
+    pages: require("./pages")(express),
     errors: require("./errors")
   }
   return function() {

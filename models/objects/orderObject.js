@@ -15,12 +15,12 @@ const order = {
   requirements: [{
     _id: false,
     name: String,
-    quantity_recieved: Number,
+    quantity_received: Number,
     status: [{
       _id: false,
       date: Date,
       missing: Boolean,
-      recieved: Boolean,
+      received: Boolean,
       comment: String
     }]
   }],
