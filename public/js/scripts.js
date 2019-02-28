@@ -81,8 +81,8 @@ $(function() {
           get: "/order/" + ids().order,
           post: "/order/"  + ids().order,
           put: "/order",
-          patch: "/order",
-          delete: "/order"
+          patch: "/order/"  + ids().order,
+          delete: "/order/"  + ids().order
         }
         break
       case "account":

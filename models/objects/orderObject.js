@@ -58,7 +58,11 @@ const order = {
   account: [{
     type: Schema.Types.ObjectId,
     ref: 'account'
-  }]
+  }],
+  active: {
+    default: true,
+    type: Boolean
+  }
 }
 
 module.exports = order;
