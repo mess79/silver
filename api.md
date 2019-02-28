@@ -86,7 +86,7 @@ returns the updated data for the person and country
 
 #### DELETE
 
-Delete a person
+Delete a person (for GDPR and data privacy reasons)
 
 `/person_country/options/id/<person document id>`
 
@@ -141,10 +141,10 @@ Returns a JSON object or an error
 
 #### DELETE
 
-Deletes an order
+Deactvates an order (does not delete, deletion is not possible)
 
 `/order/:id`
 
-An order can only be deleted if it has not been initiated, otherwise it would need to be cancelled which would be an update request.
+An order can only be deactivated if it has not been initiated, otherwise it would need to be cancelled which would be an update request.
 
 Will return a JSON onbject or an error.

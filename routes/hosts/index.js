@@ -5,7 +5,7 @@ const lib = require("../../lib/host");
 const host = function(express) {
   const router = express.Router();
 
-  router.route(["/host", "/host/:id"])
+  router.route(["/host", "/host/:name"])
     .get(function(req, res, next) {
       lib.retrieve(req)
         .then(function(result) {

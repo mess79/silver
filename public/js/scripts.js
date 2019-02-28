@@ -6,7 +6,9 @@ $(function() {
       id: $(".id").val(),
       account: $(".account").val(),
       order: $(".order").val(),
-      delete_id: $(".delete_id").val()
+      delete_id: $(".delete_id").val(),
+      name: $(".name").val(),
+      host: $(".host").val()
     }
     return obj;
   }
@@ -54,6 +56,22 @@ $(function() {
       case "company":
         data = {};
         break;
+      case "host":
+        data = {
+          name : ids().name,
+          address : [{
+            line1: "1 test road",
+            line2 : "testville",
+            line3 : "test town",
+            city : "test city",
+            county : "test county",
+            zip : "TESTZIP",
+            country : "UK"
+          }],
+          host : ids().localhost,
+          email : "info@localhost.com"
+        };
+        break;
       case "person_country":
         data = {
           "first_name": "test",
@@ -79,10 +97,10 @@ $(function() {
       case "order":
         urls = {
           get: "/order/" + ids().order,
-          post: "/order/"  + ids().order,
+          post: "/order/" + ids().order,
           put: "/order",
-          patch: "/order/"  + ids().order,
-          delete: "/order/"  + ids().order
+          patch: "/order/" + ids().order,
+          delete: "/order/" + ids().order
         }
         break
       case "account":
@@ -119,6 +137,15 @@ $(function() {
           put: "#",
           patch: "#",
           delete: "#"
+        }
+        break
+      case "host":
+        urls = {
+          get: "/host/" + ids().name,
+          post: "/host/" + ids().name,
+          put: "/host",
+          patch: "/host",
+          delete: "/host" + ids().name
         }
         break
     }
@@ -181,7 +208,6 @@ $(function() {
 
   $(".put").on('click', function(event) {
     event.preventDefault();
-    console.log(urls.put)
     $.ajax({
       url: urls.put,
       type: 'PUT',

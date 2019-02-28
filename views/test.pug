@@ -14,19 +14,26 @@ html
         option(value="invoice") invoice
         option(value="account") account
         option(value="company") company
+        option(value="host") host
       br
       p id
       input.id(type="text", value="5c75b99ac156991ef68802b5")
-      br
+      //br
       p Delete - id
       input.delete_id(type="text", value="5c75b66c695d8b1c4fff9f53")
       br
       p order #
       input.order(type="text", value="10")
-      br
+      //br
       p account
       input.account(type="text", value="5c3ee21e8910d4572a56d613")
-      br  
+      br
+      p name
+      input.name(type="text", value="default")
+      //br
+      p host
+      input.account(type="text", value="localhost")
+      br   
       a.post(href='/api') Post
       //br
       a.put(href='/api') Put
