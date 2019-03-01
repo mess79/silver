@@ -15,6 +15,7 @@ $(function() {
 
   let obj = function() {
     let data = {}
+
     switch ($("#collection").val()) {
       case "order":
         data = {
@@ -58,22 +59,25 @@ $(function() {
         break;
       case "host":
         data = {
-          name : ids().name,
-          address : [{
+          name: ids().name,
+          address: [{
             line1: "1 test road",
-            line2 : "testville",
-            line3 : "test town",
-            city : "test city",
-            county : "test county",
-            zip : "TESTZIP",
-            country : "UK"
+            line2: "testville",
+            line3: "test town",
+            city: "test city",
+            county: "test county",
+            zip: "TESTZIP",
+            country: "UK"
           }],
-          host : ids().localhost,
-          email : "info@localhost.com"
+          host: ids().host,
+          email: "info@localhost.com"
         };
         break;
       case "person_country":
         data = {
+          "account": [
+            ids().account
+          ],
           "first_name": "test",
           "surname": "case2",
           "china": {
@@ -85,6 +89,7 @@ $(function() {
         }
         break;
     }
+    //console.log(data);
     return data;
   };
 
@@ -152,8 +157,10 @@ $(function() {
   })
 
   $("#collection").trigger("change");
+
   $("input").on("change", function() {
     $("#collection").trigger("change");
+    //console.log(JSON.stringify(obj()))
   })
 
   $(".get").on('click', function(event) {
@@ -161,10 +168,10 @@ $(function() {
     $.ajax({
       url: urls.get,
       type: 'GET',
-      success: function(data) {
-        console.log(data);
+      success: function(result) {
+        //console.log(data);
         $(".url").text(urls.get);
-        $(".output").text(JSON.stringify(data, null, 4));
+        $(".output").text(JSON.stringify(result, null, 4));
       },
       cache: false,
       contentType: "application/json",
@@ -178,10 +185,10 @@ $(function() {
       url: urls.post,
       type: 'POST',
       data: JSON.stringify(obj()),
-      success: function(data) {
-        console.log(data);
+      success: function(result) {
+        //console.log(data);
         $(".url").text(urls.post);
-        $(".output").text(JSON.stringify(data, null, 4));
+        $(".output").text(JSON.stringify(result, null, 4));
       },
       cache: false,
       contentType: "application/json",
@@ -195,10 +202,10 @@ $(function() {
       url: urls.patch,
       type: 'PATCH',
       data: JSON.stringify(obj()),
-      success: function(data) {
-        console.log(data);
+      success: function(result) {
+        //console.log(data);
         $(".url").text(urls.patch);
-        $(".output").text(JSON.stringify(data, null, 4));
+        $(".output").text(JSON.stringify(result, null, 4));
       },
       cache: false,
       contentType: "application/json",
@@ -208,14 +215,14 @@ $(function() {
 
   $(".put").on('click', function(event) {
     event.preventDefault();
+    //console.log(obj())
     $.ajax({
       url: urls.put,
       type: 'PUT',
       data: JSON.stringify(obj()),
-      success: function(data) {
-        console.log(data);
+      success: function(result) {
         $(".url").text(urls.put);
-        $(".output").text(JSON.stringify(data, null, 4));
+        $(".output").text(JSON.stringify(result, null, 4));
       },
       cache: false,
       contentType: "application/json",
@@ -228,10 +235,10 @@ $(function() {
     $.ajax({
       url: urls.delete,
       type: 'DELETE',
-      success: function(data) {
-        console.log(data);
+      success: function(result) {
+        //console.log(data);
         $(".url").text(urls.delete);
-        $(".output").text(JSON.stringify(data, null, 4));
+        $(".output").text(JSON.stringify(result, null, 4));
       },
       cache: false,
       contentType: "application/json",

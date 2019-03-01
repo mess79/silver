@@ -4,7 +4,7 @@ const map = {
   , employer : require("./employer")
   , inviter : require("./inviter")
   , travel : require("./travel")
-
+//  , owner : require("./owner")
 }
 
 module.exports = map;

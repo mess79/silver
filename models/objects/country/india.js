@@ -1,7 +1,10 @@
 const map = require("../common/map");
 //console.log(map);
 
-const india = [{
+const india = /*[{
+  "section": "owner",
+  "import": map.owner
+}, */[{
   "section": "Personal",
   "import": map.personal
 }, {

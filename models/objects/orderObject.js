@@ -59,6 +59,10 @@ const order = {
     type: Schema.Types.ObjectId,
     ref: 'account'
   }],
+  host: {
+    type: Schema.Types.ObjectId,
+    ref: 'host'
+  },
   active: {
     default: true,
     type: Boolean

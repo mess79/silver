@@ -36,6 +36,10 @@ const invoice = {
     type: Schema.Types.ObjectId,
     ref: 'account'
   }]
+  ,host: {
+    type: Schema.Types.ObjectId,
+    ref: 'host'
+  },
 }
 
 module.exports = invoice;
