@@ -44,6 +44,7 @@ const logon = function(express) {
                       }
                       let payload = {
                         subject: result._id,
+                        processing_company: result.processing_company,
                         hash: result.csrf_hash,
                         role: result.role,
                         company: result.company,

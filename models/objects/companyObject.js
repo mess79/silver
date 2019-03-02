@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 const company = {
 
   name: String,
+  link: String,
+  domain: String,
   address: [{
     _id: false,
     line1: String,
@@ -17,11 +19,11 @@ const company = {
   contact: [{
     type: Schema.Types.ObjectId,
     ref: 'account'
-  }]
+  }],
   host: {
     type: Schema.Types.ObjectId,
     ref: 'host'
-  },
+  }
 }
 
 module.exports = company;

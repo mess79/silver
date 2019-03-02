@@ -36,6 +36,10 @@ const account = {
     type: Schema.Types.ObjectId,
     ref: 'company'
   }],
+  processing_company: {
+    type: Schema.Types.ObjectId,
+    ref: 'company'
+  },
   people: [{
     type: Schema.Types.ObjectId,
     ref: 'person'

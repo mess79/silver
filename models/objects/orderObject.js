@@ -59,6 +59,18 @@ const order = {
     type: Schema.Types.ObjectId,
     ref: 'account'
   }],
+  consultant: [{
+    type: Schema.Types.ObjectId,
+    ref: 'account'
+  }],
+  company: {
+    type: Schema.Types.ObjectId,
+    ref: 'company'
+  },
+  processing_company: {
+    type: Schema.Types.ObjectId,
+    ref: 'company'
+  },
   host: {
     type: Schema.Types.ObjectId,
     ref: 'host'

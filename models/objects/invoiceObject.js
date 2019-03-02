@@ -35,11 +35,27 @@ const invoice = {
   contact: [{
     type: Schema.Types.ObjectId,
     ref: 'account'
-  }]
-  ,host: {
+  }],
+  host: {
     type: Schema.Types.ObjectId,
     ref: 'host'
   },
+  company: {
+    type: Schema.Types.ObjectId,
+    ref: 'company'
+  },
+  processing_company: {
+    type: Schema.Types.ObjectId,
+    ref: 'company'
+  },
+  order: {
+    type: Schema.Types.ObjectId,
+    ref: 'order'
+  },
+  consultant: [{
+    type: Schema.Types.ObjectId,
+    ref: 'account'
+  }]
 }
 
 module.exports = invoice;
