@@ -31,58 +31,58 @@ const logon = function(express) {
             if (!result) {
               console.log("no user found: " + req.body.username)
             } else {
+              auth.verify(req.body.password, result.password)
+                .then((verified) => {
+                  if (verified) {
 
-              auth.verify(req.body.password, result.password).then((verified) => {
-                if (verified) {
-
-                  host.findOne({
-                      "host": req.headers.host
-                    })
-                    .then(function(hostResult) {
-                      let options = {
-                        audience: req.headers.host
-                      }
-                      let payload = {
-                        subject: result._id,
-                        processing_company: result.processing_company,
-                        hash: result.csrf_hash,
-                        role: result.role,
-                        company: result.company,
-                        host: String(hostResult._id)
-                      }
-                      let jwt_token = jwt.sign(payload, options)
-                      res.cookie('authorization', jwt_token, {
-                        expires: new Date(Date.now() + 3600000),
-                        httpOnly: true
-                      });
-
-                      let csrfTokens = new csrf()
-                      let token = csrfTokens.create(String(payload.hash))
-                      res.cookie('csrf', token, {
-                        expires: new Date(Date.now() + 3600000),
-                      });
-                      send(req, res, next, {
-                        message: "logged on",
-                        data: result,
-                        url: "auth/login"
+                    host.findOne({
+                        "host": req.headers.host
                       })
-                    })
-                    .catch(function(err) {
-                      console.log(err)
-                      send(req, res, next, {
-                        message: "host domain not found",
-                        data: false,
-                        url: "auth/login"
+                      .then(function(hostResult) {
+                        let options = {
+                          audience: req.headers.host
+                        }
+                        let payload = {
+                          subject: result._id,
+                          processing_company: result.processing_company,
+                          hash: result.csrf_hash,
+                          role: result.role,
+                          company: result.company,
+                          host: String(hostResult._id)
+                        }
+                        let jwt_token = jwt.sign(payload, options)
+                        res.cookie('authorization', jwt_token, {
+                          expires: new Date(Date.now() + 3600000),
+                          httpOnly: true
+                        });
+
+                        let csrfTokens = new csrf()
+                        let token = csrfTokens.create(String(payload.hash))
+                        res.cookie('csrf', token, {
+                          expires: new Date(Date.now() + 3600000),
+                        });
+                        send(req, res, next, {
+                          message: "logged on",
+                          data: result,
+                          url: "auth/login"
+                        })
                       })
+                      .catch(function(err) {
+                        console.log(err)
+                        send(req, res, next, {
+                          message: "host domain not found",
+                          data: false,
+                          url: "auth/login"
+                        })
+                      })
+                  } else {
+                    send(req, res, next, {
+                      message: "login failed",
+                      data: false,
+                      url: "auth/login"
                     })
-                } else {
-                  send(req, res, next, {
-                    message: "login failed",
-                    data: false,
-                    url: "auth/login"
-                  })
-                }
-              })
+                  }
+                })
             }
           })
           .catch(function(err) {

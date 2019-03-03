@@ -99,8 +99,13 @@ module.exports = {
       favicon: 'src/images/favicon.ico',
       template: 'views/auth/login.pug'
     }),
-
-
+    new HtmlWebpackPlugin({
+      filename: 'auth/activation_request.html',
+      excludeAssets: [/^((?!activation_request).)*$/],
+      title: 'Activation Request',
+      favicon: 'src/images/favicon.ico',
+      template: 'views/auth/activation_request.pug'
+    }),
     new HtmlWebpackExcludeAssetsPlugin()
   ],
   entry: {

@@ -1,0 +1,15 @@
+html(lang="en")
+  head
+    style(type='text/css').
+      form>p, form>input {
+        width:10em;
+        display:inline-block;
+      }
+    link(rel='stylesheet', href='/css/style.css', type='text/css')
+    script(src="/js/jquery-3.3.1.min.js")
+  h1 Account activation
+  form(action="/activation_request", method="post")
+    p Username:
+    input(type="text", name="username")
+    br
+    button(type="submit")#activate Submit

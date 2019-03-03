@@ -6,6 +6,7 @@ const csrf = require('csrf');
 const host = require("../../models/host");
 const company = require("../../models/company");
 const cryptoRandomString = require('crypto-random-string');
+const activate = require("../../lib/auth/activate");
 
 const register = function(express) {
   const router = express.Router();
@@ -47,13 +48,18 @@ const register = function(express) {
                   "host": req.headers.host
                 })
                 .then(function(hostResult) {
-                  req.hostResult = hostResult
+                  req.body.host = hostResult
                   resolve(req)
                 })
             })
           })
           .then(function(req) {
             return new Promise((resolve, reject) => {
+              req.body.activation = {
+                hash: cryptoRandomString(256),
+                exp: Date.now() + 15 * 60 * 1000
+              }
+              req.body.active = false;
               account.create(req.body)
                 .then(function(result) {
                   req.result = result
@@ -79,31 +85,9 @@ const register = function(express) {
             })
           })
           .then(function(req) {
-            let options = {
-              audience: req.headers.host
-            }
-            let payload = {
-              subject: req.result._id,
-              /*processing_company: result.processing_company
-              procesing company can be updated later once the profile is set up.
-              or maybe check the email domain againt the host to see.
-              */
-              hash: req.result.csrf_hash,
-              role: req.result.role,
-              company: req.result.company,
-              host: String(req.hostResult._id)
-            }
-            res.cookie('authorization', jwt.sign(payload, options), {
-              expires: new Date(Date.now() + 900000),
-              httpOnly: true
-            });
-            let csrfTokens = new csrf()
-            let token = csrfTokens.create(String(payload.hash))
-            res.cookie('csrf', token, {
-              expires: new Date(Date.now() + 3600000),
-            });
+            activate(req.body.username, req.headers.host)
             send(req, res, next, {
-              message: "registered and logged on",
+              message: "registered sending activation email",
               data: req.result,
               url: "auth/register"
             })
@@ -114,6 +98,7 @@ const register = function(express) {
             if (err.message === "user already exists") {
               message = "user already exists"
             }
+
             send(req, res, next, {
               message: message,
               data: false,
