@@ -5,6 +5,7 @@ const jwt = require("../../lib/auth/jwt");
 const csrf = require('csrf');
 const send = require('../../lib/util/send');
 const cryptoRandomString = require('crypto-random-string');
+const activate = require("../../lib/auth/activate");
 
 const logon = function(express) {
   const router = express.Router();
@@ -30,6 +31,20 @@ const logon = function(express) {
           .then(function(result) {
             if (!result) {
               console.log("no user found: " + req.body.username)
+              send(req, res, next, {
+                message: "User or password not found",
+                data: false,
+                url: "auth/login"
+              })
+            } else if (!result.active) {
+              console.log("account inactive, resent activation email");
+              activate(req.body.username, req.headers.host);
+              send(req, res, next, {
+                message: "account inactive, resent activation email",
+                data: false,
+                url: "auth/login"
+              })
+
             } else {
               auth.verify(req.body.password, result.password)
                 .then((verified) => {
@@ -63,7 +78,8 @@ const logon = function(express) {
                         });
                         send(req, res, next, {
                           message: "logged on",
-                          data: result,
+                          //data: result,
+                          data:false,
                           url: "auth/login"
                         })
                       })
@@ -77,7 +93,7 @@ const logon = function(express) {
                       })
                   } else {
                     send(req, res, next, {
-                      message: "login failed",
+                      message: "User or password not found",
                       data: false,
                       url: "auth/login"
                     })

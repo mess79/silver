@@ -1,7 +1,12 @@
 const path = require("path");
+const fs = require("fs");
+const send = require('../../lib/util/send')
+
 const pages = function(express) {
+
   const router = express.Router();
   const fileDirectory = path.resolve(__dirname, '../../dist/');
+  const pugFileDirectory = path.resolve(__dirname, '../../views/');
   router.route(['/', '/:path'])
     .all(function(req, res, next) {
       if (!req.params.path) {
@@ -9,16 +14,23 @@ const pages = function(express) {
       }
       let path = req.params.path;
       let pathSplit = path.split(".")
+
+      // send only urls with no extention (so no assets)
       if (pathSplit.length === 1) {
-        path = req.params.path + '.html';
+        send(req, res, next, {
+          message: false,
+          data: false,
+          url: path
+        })
+      } else {
+        res.sendFile(path, {
+          root: fileDirectory
+        }, (err) => {
+          if (err) {
+            next(err)
+          };
+        });
       }
-      res.sendFile(path, {
-        root: fileDirectory
-      }, (err) => {
-        if (err) {
-          next(err)
-        };
-      });
     })
   return router;
 }

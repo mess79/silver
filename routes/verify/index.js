@@ -44,8 +44,8 @@ const verify = function(express) {
         let user = jwt.verify(req.cookies.authorization, options)
         let csrfTokens = new csrf()
         let csrfCheck = csrfTokens.verify(user.hash, req.cookies.csrf)
-        console.log(csrfCheck);
-        console.log(jwt)
+        //console.log(csrfCheck);
+        //console.log(jwt)
         if (user && csrfCheck) {
           req.user = user;
           let timeLeft = user.exp - Date.now() / 1000;

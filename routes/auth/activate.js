@@ -51,7 +51,14 @@ const activate = function(express) {
             res.cookie('csrf', token, {
               expires: new Date(Date.now() + 3600000),
             });
-            res.json(result)
+
+            send(req, res, next, {
+              message: "logged on",
+              data: result,
+              url: "auth/activated"
+            })
+
+            //res.json(result)
           })
           .catch(function(err) {
             console.log(err)

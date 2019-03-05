@@ -22,7 +22,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
 
-    new HtmlWebpackPlugin({
+    /*new HtmlWebpackPlugin({
       filename: 'index.html',
       excludeAssets: [/^((?!index).)*$/],
       title: 'Index',
@@ -49,8 +49,8 @@ module.exports = {
       title: 'Admin',
       favicon: 'src/images/favicon.ico',
       template: 'views/vuetest.pug'
-    }),
-    new HtmlWebpackPlugin({
+    }),*/
+    /*new HtmlWebpackPlugin({
       filename: 'auth/reset_request.html',
       excludeAssets: [/^((?!reset_request).)*$/],
       title: 'Reset Request',
@@ -105,6 +105,30 @@ module.exports = {
       title: 'Activation Request',
       favicon: 'src/images/favicon.ico',
       template: 'views/auth/activation_request.pug'
+    }),*/
+    new HtmlWebpackPlugin({
+      filename: 'linksToJS/admin.html',
+      excludeAssets: [/^((?!admin).)*$/],
+      favicon: 'src/images/favicon.ico',
+      template: 'views/justJS.pug'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'linksToJS/client.html',
+      excludeAssets: [/^((?!client).)*$/],
+      favicon: 'src/images/favicon.ico',
+      template: 'views/justJS.pug'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'linksToJS/consultant.html',
+      excludeAssets: [/^((?!consultant).)*$/],
+      favicon: 'src/images/favicon.ico',
+      template: 'views/justJS.pug'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'linksToJS/index.html',
+      excludeAssets: [/^((?!index).)*$/],
+      favicon: 'src/images/favicon.ico',
+      template: 'views/justJS.pug'
     }),
     new HtmlWebpackExcludeAssetsPlugin()
   ],
