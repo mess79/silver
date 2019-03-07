@@ -30,30 +30,26 @@ const verify = function(express) {
       }
 
       let pathSplit = path.split("/")
-      if(pathSplit.length > 2){
+      if (pathSplit.length > 2) {
         pathSplit[1] = pathSplit[1] + "/*";
       }
       path = "/" + pathSplit[1]
       let safe = _.indexOf(paths, path)
+      let options = {
+        audience: req.headers.host
+      }
+      let user = jwt.verify(req.cookies.authorization, options)
+      let csrfTokens = new csrf()
+      let csrfCheck = csrfTokens.verify(user.hash, req.cookies.csrf)
+      req.user = user;
       if (safe !== -1) {
         next()
       } else {
-        let options = {
-          audience: req.headers.host
-        }
-        let user = jwt.verify(req.cookies.authorization, options)
-        let csrfTokens = new csrf()
-        let csrfCheck = csrfTokens.verify(user.hash, req.cookies.csrf)
-        //console.log(csrfCheck);
-        //console.log(jwt)
         if (user && csrfCheck) {
-          req.user = user;
           let timeLeft = user.exp - Date.now() / 1000;
           //if jwt expires within the next 15 mins - set a new ne
-          //console.log(timeLeft);
           if (timeLeft < 900) {
-
-            let options = {
+            options = {
               audience: user.aud
             }
             let payload = {
@@ -63,7 +59,6 @@ const verify = function(express) {
               people: user.person
             }
             let jwt_token = jwt.sign(payload, options)
-
             res.cookie('authorization', jwt_token, {
               expires: new Date(Date.now() + 3600000),
               httpOnly: true
@@ -89,7 +84,6 @@ const verify = function(express) {
         }
       }
     })
-
   return {
     verify: router
   };

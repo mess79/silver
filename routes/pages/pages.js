@@ -16,6 +16,10 @@ const pages = function(express) {
       let pathSplit = path.split(".")
 
       // send only urls with no extention (so no assets)
+
+      //console.log("pages");
+      //console.log(req.user);
+
       if (pathSplit.length === 1) {
         send(req, res, next, {
           message: false,
