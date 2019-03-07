@@ -75,11 +75,14 @@ const verify = function(express) {
           if (req.xhr) {
             console.log("xhr verify fail");
             res.json({
-              auth: "Verify failed"
+              auth: "Unauthorised to access this resource"
             });
           } else {
-            console.log("redirect");
-            res.status(500).send("Unauthorized");
+            console.log("Unauthorised redirect");
+            next({
+              statusCode: "500",
+              message: "Unauthorized"
+            });
           }
         }
       }
