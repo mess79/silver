@@ -8,7 +8,8 @@ const auth = function(express) {
     logout: require("./logoff")(express),
     resetSubmit: require("./resetSubmit")(express),
     resetRequest: require("./resetRequest")(express),
-    activate: require("./activate")(express)
+    activate: require("./activate")(express),
+    activated: require("./activated")(express)
   }
 }
 

@@ -15,7 +15,6 @@ const routes = function(express) {
     .get(function(req, res, next) {
       lib.retrieve(req)
         .then(function(result) {
-          console.log("GET responded to");
           res.json(result);
         })
         .catch(function(err){
@@ -26,7 +25,6 @@ const routes = function(express) {
     .put(function(req, res, next) {
       lib.create(req)
         .then(function(result) {
-          console.log("PUT responded to");
           res.json(result);
         })
         .catch(function(err){
@@ -37,7 +35,6 @@ const routes = function(express) {
     .post(function(req, res, next) {
       lib.update(req)
         .then(function(result) {
-          console.log("POST responded to");
           res.json(result);
         })
         .catch(function(err){
@@ -48,7 +45,6 @@ const routes = function(express) {
     .delete(function(req, res, next) {
       lib.delete(req)
         .then(function(result) {
-          console.log("DELETE responded to");
           res.json(result);
         })
         .catch(function(err){
