@@ -54,20 +54,6 @@ const register = function(express) {
             })
           })
           .then(function(req) {
-            return new Promise((resolve, reject) => {
-              req.body.activation = {
-                hash: cryptoRandomString(256),
-                exp: Date.now() + 15 * 60 * 1000
-              }
-              req.body.active = false;
-              account.create(req.body)
-                .then(function(result) {
-                  req.result = result
-                  resolve(req)
-                })
-            })
-          })
-          .then(function(req) {
             if (req.cookies.company) {
               req.result.company = req.cookies.company
             }
@@ -78,8 +64,22 @@ const register = function(express) {
                 })
                 .then(function(domainResult) {
                   if (domainResult) {
-                    req.result.company = domainResult._id
+                    req.body.company = domainResult._id
                   }
+                  resolve(req)
+                })
+            })
+          })
+          .then(function(req) {
+            return new Promise((resolve, reject) => {
+              req.body.activation = {
+                hash: cryptoRandomString(256),
+                exp: Date.now() + 15 * 60 * 1000
+              }
+              req.body.active = false;
+              account.create(req.body)
+                .then(function(result) {
+                  req.result = result
                   resolve(req)
                 })
             })
@@ -98,7 +98,6 @@ const register = function(express) {
             if (err.message === "user already exists") {
               message = "user already exists"
             }
-
             send(req, res, next, {
               message: message,
               data: false,
