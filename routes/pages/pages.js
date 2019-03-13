@@ -7,6 +7,8 @@ const pages = function(express) {
   const router = express.Router();
   const fileDirectory = path.resolve(__dirname, '../../dist/');
   const pugFileDirectory = path.resolve(__dirname, '../../views/');
+  const assetDirectory = path.resolve(__dirname, '../../host_assets/');
+
   router.route(['/', '/:path'])
     .all(function(req, res, next) {
       if (!req.params.path) {
@@ -16,11 +18,6 @@ const pages = function(express) {
       let pathSplit = path.split(".")
 
       // send only urls with no extention (so no assets)
-
-      //console.log("pages");
-      //console.log(req.user);
-      //res.type(path);
-
       if (pathSplit.length === 1) {
         send(req, res, next, {
           message: false,
@@ -29,10 +26,9 @@ const pages = function(express) {
         })
       } else {
 
-// assets return
-console.log(path);
-        res.sendFile(path, {
-          root: fileDirectory
+        // assets return
+        res.sendFile(req.headers.host + "/" + path, {
+          root: assetDirectory
         }, (err) => {
           if (err) {
             next(err)
