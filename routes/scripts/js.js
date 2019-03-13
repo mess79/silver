@@ -14,9 +14,7 @@ const js = function(express) {
         };
       });
     })
-  return {
-    js: router
-  };
+  return router
 }
 
 module.exports = js

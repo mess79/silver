@@ -19,6 +19,7 @@ const pages = function(express) {
 
       //console.log("pages");
       //console.log(req.user);
+      //res.type(path);
 
       if (pathSplit.length === 1) {
         send(req, res, next, {
@@ -27,6 +28,9 @@ const pages = function(express) {
           url: path
         })
       } else {
+
+// assets return
+console.log(path);
         res.sendFile(path, {
           root: fileDirectory
         }, (err) => {

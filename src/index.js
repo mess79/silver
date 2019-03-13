@@ -1,8 +1,9 @@
 //.log("here");
-
 //import(/* webpackChunkName: "lodash" */ 'lodash').then({ default: _ } =>
 //import _ from 'lodash';
 //import a from "./users";
+
+import "./css/style.css";
 
 console.log("here");
 function getComponent() {

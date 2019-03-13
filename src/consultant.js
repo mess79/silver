@@ -1,7 +1,7 @@
 //.log("here");
 
 //import(/* webpackChunkName: "lodash" */ 'lodash').then({ default: _ } =>
-//import _ from 'lodash';
+import _ from 'lodash';
 //import a from "./users";
 
 console.log("here");
