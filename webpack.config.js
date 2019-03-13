@@ -3,6 +3,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const scriptLinks = require("./webpack_plugins/script-links");
 const cssLinks = require("./webpack_plugins/css-links");
+//const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+//const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+//const CompressionPlugin = require("compression-webpack-plugin");
+//const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 module.exports = {
   mode: "production",
@@ -34,6 +38,8 @@ module.exports = {
       chunkFilename: "css/[name].[contenthash].bundle..css"
     }),
     new CleanWebpackPlugin(['dist']),
+    //new CompressionPlugin(),
+    //new MinifyPlugin(),
     new scriptLinks({
       options: true
     }),
@@ -54,6 +60,14 @@ module.exports = {
   },
   watch: true,
   optimization: {
+    //minimizer: [
+      /*new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }), //,*/
+      // new OptimizeCSSAssetsPlugin()
+    //],
     splitChunks: {
       chunks: "all"
     }
