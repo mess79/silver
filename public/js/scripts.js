@@ -110,7 +110,7 @@ $(function() {
         break
       case "account":
         urls = {
-          get: "#",
+          get: "account/" + ids().account,
           post: "#",
           put: "#",
           patch: "#",

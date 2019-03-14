@@ -3,6 +3,7 @@ const _ = require("lodash")
 const routes = function(express, app) {
   const routeObject = {
     verify: require('./verify')(express),
+    account: require('./account')(express),
     person_country: require("./person_country")(express),
     auth: require("./auth")(express),
     scripts: require("./scripts")(express),

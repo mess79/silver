@@ -57,13 +57,6 @@ const account = {
     ref: 'host'
   },
   role: String,
-  /*permissions: {
-    case : ["c", "r", "u", "d"],
-    person_country : ["c", "r", "u", "d"],
-    account : ["c", "r", "u", "d"],
-    invoice : ["c", "r", "u", "d"],
-    company : ["c", "r", "u", "d"]
-  }*/
 }
 
 module.exports = account;
