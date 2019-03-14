@@ -5,7 +5,7 @@ const lib = require("../../lib/account");
 const account = function(express) {
   const router = express.Router();
 
-  router.route("/account/:id")
+  router.route(["/account", "/account/:id"])
     .get(function(req, res, next) {
       lib.retrieve(req)
         .then(function(result) {

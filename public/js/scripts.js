@@ -49,7 +49,18 @@ $(function() {
         };
         break;
       case "account":
-        data = {};
+        data = {
+          username: 'add12@gmail.com',
+          first_name: 'firstnames',
+          surname: 'suranames',
+          password: {
+            salt: '18392949c7dd3e7429e8098848789858',
+            hash: '$argon2d$v=19$m=4096,t=3,p=1$fyaWK+CDn3dRPKZ8cx7+6A$Y/AG1VH7do4c3J+DfRm03YatyLZxsVtoaN0HYhhnby0'
+          },
+          host: "5c79812bd457465751467ef9",
+          role: 'client',
+          account: ["5c3f93b67bd7e072659a703b"]
+        };
         break;
       case "invoice":
         data = {};
@@ -111,10 +122,10 @@ $(function() {
       case "account":
         urls = {
           get: "account/" + ids().account,
-          post: "#",
-          put: "#",
-          patch: "#",
-          delete: "#"
+          post: "account/" + ids().account,
+          put: "account",
+          patch: "account/" + ids().account,
+          delete: "account/" + ids().account
         }
         break
       case "invoice":
