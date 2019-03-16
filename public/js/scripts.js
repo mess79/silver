@@ -161,7 +161,7 @@ $(function() {
           post: "/host/" + ids().name,
           put: "/host",
           patch: "/host",
-          delete: "/host" + ids().name
+          delete: "/host/" + ids().name
         }
         break
     }
