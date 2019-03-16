@@ -81,7 +81,7 @@ $(function() {
             country: "UK"
           }],
           host: ids().host,
-          email: "info@localhost.com"
+          email: "infotest@localhost.com"
         };
         break;
       case "person_country":

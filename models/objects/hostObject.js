@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const host = {
 
   name : String,
+  active : false,
   domain: String,
   address : [{
     _id: false,
