@@ -19,33 +19,37 @@ const verify = function(express) {
     "/reset_request",
     "/favicon.ico",
     "/activation_request",
-    "/activation_request/*"
+    "/activation_request/*",
+    "/js/*",
+    "/css/*"
   ]
 
-  router.route(['/js/:jsfile', '/css/:cssfile', '/*'])
+  router.route('/*')
     .all(function(req, res, next) {
       let path = req.path;
-      if (req.params.jsfile || req.params.cssfile) {
-        path = "/"
-      }
-
       let pathSplit = path.split("/")
       if (pathSplit.length > 2) {
         pathSplit[1] = pathSplit[1] + "/*";
       }
       path = "/" + pathSplit[1]
       let safe = _.indexOf(paths, path)
-      let options = {
-        audience: req.headers.host
-      }
-      let user = jwt.verify(req.cookies.authorization, options)
-      let csrfTokens = new csrf()
-      let csrfCheck = csrfTokens.verify(user.hash, req.cookies.csrf)
-      req.user = user;
       if (safe !== -1) {
         next()
       } else {
-        if (user && csrfCheck) {
+        let options = {
+          audience: req.headers.host
+        }
+        let user = jwt.verify(req.cookies.authorization, options)
+        let csrfTokens = new csrf();
+        let csrfHeadCheck = csrfTokens.verify(user.hash, req.headers.authorization);
+        let csrfCheck = csrfTokens.verify(user.hash, req.cookies.csrf);
+
+        req.user = user;
+        if (
+          user && // checks for JWT pass
+          csrfCheck && // checks for csrf pass
+          csrfHeadCheck === csrfCheck // checks csrf cookie is the same as the header authorisation
+        ) {
           let timeLeft = user.exp - Date.now() / 1000;
           //if jwt expires within the next 15 mins - set a new ne
           if (timeLeft < 900) {
@@ -72,16 +76,21 @@ const verify = function(express) {
           }
           next()
         } else {
+          let userBoo = user !== false
+          let csrfBoo = csrfCheck !== false
+          let csrfHeadBoo = csrfHeadCheck !== false
+          console.log("Unauthorised request:");
+          console.log("user:        " + userBoo);
+          console.log("csrf cookie: " + csrfBoo);
+          console.log("csrf header: " + csrfHeadBoo)
           if (req.xhr) {
-            console.log("xhr verify fail");
             res.json({
               auth: "Unauthorised to access this resource"
             });
           } else {
-            console.log("Unauthorised redirect");
             next({
               statusCode: "500",
-              message: "Unauthorized"
+              message: "Unauthorised to access this resource"
             });
           }
         }

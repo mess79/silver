@@ -174,11 +174,32 @@ $(function() {
     //console.log(JSON.stringify(obj()))
   })
 
+  function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  const headers = function() {
+    let csrf = readCookie("csrf");
+      return {
+        "Authorization": csrf
+      }
+  }
+
+  //console.log(headers());
+
   $(".get").on('click', function(event) {
     event.preventDefault();
     $.ajax({
       url: urls.get,
       type: 'GET',
+      headers: headers(),
       success: function(result) {
         //console.log(data);
         $(".url").text(urls.get);
@@ -195,6 +216,7 @@ $(function() {
     $.ajax({
       url: urls.post,
       type: 'POST',
+      headers: headers(),
       data: JSON.stringify(obj()),
       success: function(result) {
         //console.log(data);
@@ -212,6 +234,7 @@ $(function() {
     $.ajax({
       url: urls.patch,
       type: 'PATCH',
+      headers: headers(),
       data: JSON.stringify(obj()),
       success: function(result) {
         //console.log(data);
@@ -230,6 +253,7 @@ $(function() {
     $.ajax({
       url: urls.put,
       type: 'PUT',
+      headers: headers(),
       data: JSON.stringify(obj()),
       success: function(result) {
         $(".url").text(urls.put);
@@ -246,6 +270,7 @@ $(function() {
     $.ajax({
       url: urls.delete,
       type: 'DELETE',
+      headers: headers(),
       success: function(result) {
         //console.log(data);
         $(".url").text(urls.delete);
