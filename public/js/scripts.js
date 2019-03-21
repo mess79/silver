@@ -7,6 +7,7 @@ $(function() {
       account: $(".account").val(),
       order: $(".order").val(),
       delete_id: $(".delete_id").val(),
+      invoice: $(".invoice").val(),
       name: $(".name").val(),
       host: $(".host").val()
     }
@@ -63,7 +64,32 @@ $(function() {
         };
         break;
       case "invoice":
-        data = {};
+        data = {
+          "account": ["5c3ee21e8910d4572a56d613"],
+          "person": ["5c327a5589ecdd4af7821c6a"],
+          "address": {
+            "line1": "1 test road",
+            "line2": "test add line 2",
+            "line3": "test add third line",
+            "city": "test city",
+            "county": "test county",
+            "zip": "TEST21",
+            "country": "UNITED TEST COUNTRY"
+          },
+          "line_item": [{
+            "_id": "5c46278502423150314ad57d",
+            "service": "test service",
+            "quantity": 2,
+            "amount": 50,
+            "tax": 0.2
+          }, {
+            "_id": "5c46278502423150314ad57c",
+            "service": "test service 2",
+            "quantity": 4,
+            "amount": 25,
+            "tax": 0
+          }],
+        };
         break
       case "company":
         data = {};
@@ -130,11 +156,11 @@ $(function() {
         break
       case "invoice":
         urls = {
-          get: "#",
-          post: "#",
-          put: "#",
-          patch: "#",
-          delete: "#"
+          get: "/invoice/" + ids().invoice,
+          post: "/invoice/" + ids().invoice,
+          put: "/invoice",
+          patch: "/invoice/" + ids().invoice,
+          delete: "/invoice/" + ids().invoice
         }
         break
       case "person_country":
@@ -187,9 +213,9 @@ $(function() {
 
   const headers = function() {
     let csrf = readCookie("csrf");
-      return {
-        "Authorization": csrf
-      }
+    return {
+      "Authorization": csrf
+    }
   }
 
   //console.log(headers());

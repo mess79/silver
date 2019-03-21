@@ -8,6 +8,7 @@ const routes = function(express, app) {
     auth: require("./auth")(express),
     scripts: require("./scripts")(express),
     order: require("./orders")(express),
+    invoice: require("./invoice")(express),
     host: require("./hosts")(express),
     pages: require("./pages")(express),
     errors: require("./errors")

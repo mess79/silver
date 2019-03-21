@@ -17,8 +17,8 @@ const invoice = {
     person: [{
       type: Schema.Types.ObjectId,
       ref: 'person'
-    }]
-    country_from String,
+    }],
+    country_from: String,
     country_to: String,
     service: String
   }],
@@ -32,7 +32,7 @@ const invoice = {
   paid: Boolean,
   closed: Boolean,
   credit: Boolean,
-  contact: [{
+  account: [{
     type: Schema.Types.ObjectId,
     ref: 'account'
   }],

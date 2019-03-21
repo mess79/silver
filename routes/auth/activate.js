@@ -42,10 +42,14 @@ const activate = function(express) {
               company: result.company,
               host: String(req.hostResult._id)
             }
-            res.cookie('authorization', jwt.sign(payload, options), {
-              expires: new Date(Date.now() + 900000),
+            let cookieOptions = {
+              expires: new Date(Date.now() + 3600000),
               httpOnly: true
-            });
+            }
+            if (process.env.NODE_ENV === "production") {
+              cookieOptions.secure = true
+            }
+            res.cookie('authorization', jwt.sign(payload, options), cookieOptions);
             let csrfTokens = new csrf()
             let token = csrfTokens.create(String(payload.hash))
             res.cookie('csrf', token, {

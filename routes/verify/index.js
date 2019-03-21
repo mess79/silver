@@ -62,12 +62,15 @@ const verify = function(express) {
               company: user.company,
               people: user.person
             }
-            let jwt_token = jwt.sign(payload, options)
-            res.cookie('authorization', jwt_token, {
+            let cookieOptions = {
               expires: new Date(Date.now() + 3600000),
               httpOnly: true
-            });
-
+            }
+            if (process.env.NODE_ENV === "production") {
+              cookieOptions.secure = true
+            }
+            let jwt_token = jwt.sign(payload, options)
+            res.cookie('authorization', jwt_token, cookieOptions);
             let token = csrfTokens.create(payload.hash)
             res.cookie('csrf', token, {
               expires: new Date(Date.now() + 3600000),
@@ -81,6 +84,7 @@ const verify = function(express) {
           let csrfHeadBoo = csrfHeadCheck !== false
           console.log("Unauthorised request:");
           console.log("user:        " + userBoo);
+          //console.log(user);
           console.log("csrf cookie: " + csrfBoo);
           console.log("csrf header: " + csrfHeadBoo)
           if (req.xhr) {

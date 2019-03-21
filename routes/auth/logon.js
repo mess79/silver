@@ -66,11 +66,14 @@ const logon = function(express) {
                           host: String(hostResult._id)
                         }
                         let jwt_token = jwt.sign(payload, options)
-                        res.cookie('authorization', jwt_token, {
+                        let cookieOptions = {
                           expires: new Date(Date.now() + 3600000),
                           httpOnly: true
-                        });
-
+                        }
+                        if (process.env.NODE_ENV === "production") {
+                          cookieOptions.secure = true
+                        }
+                        res.cookie('authorization', jwt_token, cookieOptions);
                         let csrfTokens = new csrf()
                         let token = csrfTokens.create(String(payload.hash))
                         res.cookie('csrf', token, {
@@ -79,7 +82,7 @@ const logon = function(express) {
                         send(req, res, next, {
                           message: "logged on",
                           //data: result,
-                          data:false,
+                          data: false,
                           url: "auth/login"
                         })
                       })
