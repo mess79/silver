@@ -16,7 +16,7 @@ const company = {
     zip: String,
     country: String
   }],
-  contact: [{
+  account: [{
     type: Schema.Types.ObjectId,
     ref: 'account'
   }],

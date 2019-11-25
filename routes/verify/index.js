@@ -84,7 +84,6 @@ const verify = function(express) {
           let csrfHeadBoo = csrfHeadCheck !== false
           console.log("Unauthorised request:");
           console.log("user:        " + userBoo);
-          //console.log(user);
           console.log("csrf cookie: " + csrfBoo);
           console.log("csrf header: " + csrfHeadBoo)
           if (req.xhr) {

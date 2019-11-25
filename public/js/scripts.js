@@ -8,6 +8,7 @@ $(function() {
       order: $(".order").val(),
       delete_id: $(".delete_id").val(),
       invoice: $(".invoice").val(),
+      company: $(".company").val(),
       name: $(".name").val(),
       host: $(".host").val()
     }
@@ -92,7 +93,20 @@ $(function() {
         };
         break
       case "company":
-        data = {};
+        data = {
+          "contact": ["5c3ee21e8910d4572a56d613"],
+          "name": "test company",
+          "address": [{
+            "line1": "1 test road",
+            "line2": "test add line 2",
+            "line3": "test add third line",
+            "city": "test city",
+            "county": "test county",
+            "zip": "TEST21",
+            "country": "UNITED TEST COUNTRY"
+          }],
+          "domain": "test.com"
+        };
         break;
       case "host":
         data = {
@@ -160,7 +174,7 @@ $(function() {
           post: "/invoice/" + ids().invoice,
           put: "/invoice",
           patch: "/invoice/" + ids().invoice,
-          delete: "/invoice/" + ids().invoice
+          delete: "#"
         }
         break
       case "person_country":
@@ -174,11 +188,11 @@ $(function() {
         break
       case "company":
         urls = {
-          get: "#",
-          post: "#",
-          put: "#",
-          patch: "#",
-          delete: "#"
+          get: "/company/" + ids().company,
+          post: "/company/" + ids().company,
+          put: "/company/",
+          patch: "/company/" + ids().company,
+          delete: "/company/" + ids().company
         }
         break
       case "host":
