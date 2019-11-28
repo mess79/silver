@@ -1,0 +1,3 @@
+to build locally
+
+s2i build https://github.com/mess79/silver.git nodeshift/centos7-s2i-nodejs:latest webapp

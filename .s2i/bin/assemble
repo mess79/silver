@@ -1,5 +1,11 @@
 #!/bin/bash
 echo "TESTING TESTING 123"
+
+apt-get update && apt-get -y install curl \
+  qt5-default \
+  libcairo2-dev \
+  libpoppler-qt5-dev
+
 set -e
 
 source /usr/libexec/s2i/env
