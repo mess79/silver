@@ -37,6 +37,12 @@ if [ ! -z "$NPM_MIRROR" ]; then
 	npm config set registry $NPM_MIRROR
 fi
 
+# inserted text
+apt-get update && apt-get -y install curl \
+qt5-default \
+libcairo2-dev \
+libpoppler-qt5-dev
+
 echo "---> Building your Node application from source"
 echo -e "Current git config"
 git config --list
