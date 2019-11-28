@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "TESTING TESTING 123"
 set -e
 
 source /usr/libexec/s2i/env
@@ -36,12 +36,6 @@ if [ ! -z "$NPM_MIRROR" ]; then
 	echo "---> Setting the npm package mirror to $NPM_MIRROR"
 	npm config set registry $NPM_MIRROR
 fi
-
-# inserted text
-apt-get update && apt-get -y install curl \
-qt5-default \
-libcairo2-dev \
-libpoppler-qt5-dev
 
 echo "---> Building your Node application from source"
 echo -e "Current git config"
