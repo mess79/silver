@@ -1,6 +1,6 @@
 #!/bin/bash
-echo "TESTING TESTING 123"
 
+#echo "TESTING TESTING 123"
 #yum update && yum -y install curl \
 #  qt5-default \
 #  libcairo2-dev \
@@ -43,7 +43,7 @@ if [ ! -z "$NPM_MIRROR" ]; then
 	npm config set registry $NPM_MIRROR
 fi
 
-sudo yum install curl
+#yum install curl
 
 echo "---> Building your Node application from source"
 echo -e "Current git config"
