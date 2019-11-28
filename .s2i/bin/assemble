@@ -1,10 +1,10 @@
 #!/bin/bash
 echo "TESTING TESTING 123"
 
-yum update && yum -y install curl \
-  qt5-default \
-  libcairo2-dev \
-  libpoppler-qt5-dev
+#yum update && yum -y install curl \
+#  qt5-default \
+#  libcairo2-dev \
+#  libpoppler-qt5-dev
 
 set -e
 
@@ -42,6 +42,8 @@ if [ ! -z "$NPM_MIRROR" ]; then
 	echo "---> Setting the npm package mirror to $NPM_MIRROR"
 	npm config set registry $NPM_MIRROR
 fi
+
+yum -v
 
 echo "---> Building your Node application from source"
 echo -e "Current git config"
