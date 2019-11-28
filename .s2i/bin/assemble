@@ -43,7 +43,7 @@ if [ ! -z "$NPM_MIRROR" ]; then
 	npm config set registry $NPM_MIRROR
 fi
 
-yum install curl
+sudo yum install curl
 
 echo "---> Building your Node application from source"
 echo -e "Current git config"
