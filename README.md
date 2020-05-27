@@ -37,3 +37,7 @@ Create a new project and pull the image from the docker hub.
 Create a config map using the openshift_env.yaml file, create anything then edit the yaml and paste the contents in.
 
 Make sure to link the config map to the deployment and then it will use different mongodb (set up atlas for testing) and different keys for the tokens.  Also a variable to show that this is running in Openshift.
+
+# Full documents and api
+
+[Documents](docs/index.md)
