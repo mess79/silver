@@ -1,3 +1,3 @@
-#Contents of documentation
+# Contents of documentation
 
-* [API](/api.md/)
+* [API](api.md)
