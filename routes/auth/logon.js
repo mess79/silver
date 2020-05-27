@@ -18,42 +18,41 @@ const logon = function(express) {
       })
     })
     .post(function(req, res, next) {
-
       if (req.body.username && req.body.password) {
-        account.findOneAndUpdate({
-            username: req.body.username
-          }, {
-            csrf_hash: cryptoRandomString(32)
-          }, {
-            new: true
+        host.findOne({
+            "host": req.headers.host
           })
-          .lean()
-          .then(function(result) {
-            if (!result) {
-              console.log("no user found: " + req.body.username)
-              send(req, res, next, {
-                message: "User or password not found",
-                data: false,
-                url: "auth/login"
+          .then(function(hostResult) {
+            account.findOneAndUpdate({
+                username: req.body.username,
+                "host": hostResult._id
+              }, {
+                csrf_hash: cryptoRandomString(32)
+              }, {
+                new: true
               })
-            } else if (!result.active) {
-              console.log("account inactive, resent activation email");
-              activate(req.body.username, req.headers.host);
-              send(req, res, next, {
-                message: "account inactive, resent activation email",
-                data: false,
-                url: "auth/login"
-              })
+              .lean()
+              .then(function(result) {
+                if (!result) {
+                  console.log("no user found: " + req.body.username)
+                  send(req, res, next, {
+                    message: "User or password not found",
+                    data: false,
+                    url: "auth/login"
+                  })
+                } else if (!result.active) {
+                  console.log("account inactive, resent activation email");
+                  activate(req.body.username, req.headers.host);
+                  send(req, res, next, {
+                    message: "account inactive, resent activation email",
+                    data: false,
+                    url: "auth/login"
+                  })
 
-            } else {
-              auth.verify(req.body.password, result.password)
-                .then((verified) => {
-                  if (verified) {
-
-                    host.findOne({
-                        "host": req.headers.host
-                      })
-                      .then(function(hostResult) {
+                } else {
+                  auth.verify(req.body.password, result.password)
+                    .then((verified) => {
+                      if (verified) {
                         let options = {
                           audience: req.headers.host
                         }
@@ -63,7 +62,7 @@ const logon = function(express) {
                           hash: result.csrf_hash,
                           role: result.role,
                           company: result.company,
-                          host: String(hostResult._id)
+                          host: String(result.host)
                         }
                         let jwt_token = jwt.sign(payload, options)
                         let cookieOptions = {
@@ -85,32 +84,24 @@ const logon = function(express) {
                           data: false,
                           url: "auth/login"
                         })
-                      })
-                      .catch(function(err) {
-                        console.log(err)
+                      } else {
                         send(req, res, next, {
-                          message: "host domain not found",
+                          message: "User or password not found",
                           data: false,
                           url: "auth/login"
                         })
-                      })
-                  } else {
-                    send(req, res, next, {
-                      message: "User or password not found",
-                      data: false,
-                      url: "auth/login"
+                      }
                     })
-                  }
+                }
+              })
+              .catch(function(err) {
+                console.log(err)
+                send(req, res, next, {
+                  message: "login failed",
+                  data: false,
+                  url: "auth/login"
                 })
-            }
-          })
-          .catch(function(err) {
-            console.log(err)
-            send(req, res, next, {
-              message: "login failed",
-              data: false,
-              url: "auth/login"
-            })
+              })
           })
       } else {
         send(req, res, next, {

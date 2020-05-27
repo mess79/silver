@@ -9,7 +9,7 @@ html
       h1 Data upload tests
       p collection
       select#collection
-        option(value="person_country", selected) person_country
+        option(value="person_data", selected) person_data
         option(value="order") order
         option(value="invoice") invoice
         option(value="account") account
@@ -17,19 +17,19 @@ html
         option(value="host") host
       br
       p id
-      input.id(type="text", value="5c821f2c46f89d3e338c0191")
+      input.id(type="text", value="5ecd4bcbd847184b75270ec0")
       //br
       p Delete - id
-      input.delete_id(type="text", value="5c75b66c695d8b1c4fff9f53")
+      input.delete_id(type="text", value="")
       br
       p order #
-      input.order(type="text", value="49")
+      input.order(type="text", value="1")
       //br
       p invoice #
       input.invoice(type="text", value="1")
       br
       p account
-      input.account(type="text", value="5c3ee21e8910d4572a56d613")
+      input.account(type="text", value="5ec14ea47a3306113e1811cf")
       //br
       p name
       input.name(type="text", value="default")
@@ -38,8 +38,8 @@ html
       input.host(type="text", value="localhost:8080")
       //br
       p company
-      input.company(type="text", value="5c4623ef0509504c90c02df7")
-      br   
+      input.company(type="text", value="5ec82c958be52a1508008717)
+      br
       a.post(href='/api') Post
       //br
       a.put(href='/api') Put

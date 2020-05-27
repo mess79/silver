@@ -3,7 +3,7 @@ const routes = function(express) {
   const lib = require("../../lib/person");
   const path = require("../../lib/util/params");
 
-  router.route(['/person_country', "/person_country/:options/*"])
+  router.route(['/person_data', "/person_data/:options/*"])
     .all(function(req, res, next) {
       req = path(req);
       next();
@@ -18,7 +18,7 @@ const routes = function(express) {
           res.json(result);
         })
         .catch(function(err){
-          console.log(err)
+          //console.log(err)
           res.json({error: err.message});
         })
     })

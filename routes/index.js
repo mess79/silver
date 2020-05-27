@@ -4,7 +4,7 @@ const routes = function(express, app) {
   const routeObject = {
     verify: require('./verify')(express),
     account: require('./account')(express),
-    person_country: require("./person_country")(express),
+    person_data: require("./person_data")(express),
     auth: require("./auth")(express),
     scripts: require("./scripts")(express),
     order: require("./orders")(express),

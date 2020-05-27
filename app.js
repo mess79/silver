@@ -155,6 +155,7 @@ requirementsItem.create({
     }
   })
 */
+
 /*
 const order = require("./models/order");
 order.create({
@@ -223,7 +224,6 @@ invoice.create({
   // saved!
 });
 */
-
 /*
 const company = require("./models/company");
 company.create({
@@ -238,6 +238,30 @@ company.create({
     country : "UNITED TEST COUNTRY"
   }],
   contact : "5c3ee21e8910d4572a56d613"
+}, function (err, small) {
+  if (err) {console.log(handleError(err))} else {
+    console.log(small);
+  }
+  // saved!
+});
+*/
+/*
+const host = require("./models/host");
+host.create({
+  name : "default",
+  active : true,
+  domain: "localhost:8080",
+  address : [{
+    line1: "1 default host road",
+    line2 : "test add line 2",
+    line3 : "test add third line",
+    city : "test city",
+    county : "test county",
+    zip : "TEST21",
+    country : "UNITED TEST HOST COUNTRY"
+  }],
+  host : "5ec849011ac58b247bb34526",
+  email : "madeup@host.com"
 }, function (err, small) {
   if (err) {console.log(handleError(err))} else {
     console.log(small);

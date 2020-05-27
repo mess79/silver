@@ -124,7 +124,7 @@ $(function() {
           email: "infotest@localhost.com"
         };
         break;
-      case "person_country":
+      case "person_data":
         data = {
           "account": [
             ids().account
@@ -177,13 +177,13 @@ $(function() {
           delete: "#"
         }
         break
-      case "person_country":
+      case "person_data":
         urls = {
-          get: "/person_country/options/country/china/id/" + ids().id,
-          post: "/person_country/options/country/india/id/" + ids().id,
-          put: "/person_country/options/country/china",
-          patch: "/person_country/options/country/china/",
-          delete: "/person_country/options/id/" + ids().delete_id
+          get: "/person_data/options/country/china/id/" + ids().id,
+          post: "/person_data/options/country/india/id/" + ids().id,
+          put: "/person_data/options/country/china",
+          patch: "/person_data/options/country/china/",
+          delete: "/person_data/options/id/" + ids().delete_id
         }
         break
       case "company":
