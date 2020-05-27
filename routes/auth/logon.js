@@ -27,7 +27,7 @@ const logon = function(express) {
                 username: req.body.username,
                 "host": hostResult._id
               }, {
-                csrf_hash: cryptoRandomString(32)
+                csrf_hash: cryptoRandomString({length:32})
               }, {
                 new: true
               })

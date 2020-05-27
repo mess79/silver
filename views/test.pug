@@ -1,54 +1,54 @@
 html
-  head
-    title Test data submission
-    link(rel='stylesheet', href='/css/style.css', type='text/css')
-    script(src="/js/jquery-3.3.1.min.js")
-    script(src="/js/scripts.js")
-  body
-    form
-      h1 Data upload tests
-      p collection
-      select#collection
-        option(value="person_data", selected) person_data
-        option(value="order") order
-        option(value="invoice") invoice
-        option(value="account") account
-        option(value="company") company
-        option(value="host") host
-      br
-      p id
-      input.id(type="text", value="5ecd4bcbd847184b75270ec0")
-      //br
-      p Delete - id
-      input.delete_id(type="text", value="")
-      br
-      p order #
-      input.order(type="text", value="1")
-      //br
-      p invoice #
-      input.invoice(type="text", value="1")
-      br
-      p account
-      input.account(type="text", value="5ec14ea47a3306113e1811cf")
-      //br
-      p name
-      input.name(type="text", value="default")
-      br
-      p host
-      input.host(type="text", value="localhost:8080")
-      //br
-      p company
-      input.company(type="text", value="5ec82c958be52a1508008717)
-      br
-      a.post(href='/api') Post
-      //br
-      a.put(href='/api') Put
-      //br
-      a.patch(href='/api') Patch
-      //br
-      a.get(href='/api') Get
-      //br
-      a.delete(href='/api') Delete
-      //br
-    div.url
-    textarea.output
+	head
+		title Test data submission
+		link(rel='stylesheet', href='/css/style.css', type='text/css')
+		script(src="/js/jquery-3.3.1.min.js")
+		script(src="/js/scripts.js")
+	body
+		form
+			h1 Data upload tests
+			p collection
+			select#collection
+				option(value="person_data", selected) person_data
+				option(value="order") order
+				option(value="invoice") invoice
+				option(value="account") account
+				option(value="company") company
+				option(value="host") host
+			br
+			p id
+			input.id(type="text", value="5ecd4bcbd847184b75270ec0")
+			//br
+			p Delete - id
+			input.delete_id(type="text", value="")
+			br
+			p order #
+			input.order(type="text", value="1")
+			//br
+			p invoice #
+			input.invoice(type="text", value="1")
+			br
+			p account
+			input.account(type="text", value="5ec14ea47a3306113e1811cf")
+			//br
+			p name
+			input.name(type="text", value="default")
+			br
+			p host
+			input.host(type="text", value="localhost:8080")
+			//br
+			p company
+			input.company(type="text", value="5ec82c958be52a1508008717")
+			br
+			a.post(href='/api') Post
+			//br
+			a.put(href='/api') Put
+			//br
+			a.patch(href='/api') Patch
+			//br
+			a.get(href='/api') Get
+			//br
+			a.delete(href='/api') Delete
+			//br
+		div.url
+		textarea.output
