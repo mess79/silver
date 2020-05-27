@@ -33,7 +33,7 @@ const register = function(express) {
                 })
                 .then(function(exist) {
                   if (exist.length === 0) {
-                    req.body.csrf_hash = cryptoRandomString(32);
+                    req.body.csrf_hash = cryptoRandomString({length:32});
                     req.body.role = "client";
                     resolve(req)
                   } else {
@@ -73,7 +73,7 @@ const register = function(express) {
           .then(function(req) {
             return new Promise((resolve, reject) => {
               req.body.activation = {
-                hash: cryptoRandomString(256),
+                hash: cryptoRandomString({length:256}),
                 exp: Date.now() + 15 * 60 * 1000
               }
               req.body.active = false;
