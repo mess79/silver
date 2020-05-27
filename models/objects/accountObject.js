@@ -56,7 +56,7 @@ const account = {
     type: Schema.Types.ObjectId,
     ref: 'host'
   },
-  role: String,
+  role: String
 }
 
 module.exports = account;
