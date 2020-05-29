@@ -40,4 +40,4 @@ Make sure to link the config map to the deployment and then it will use differen
 
 # Full documents and api
 
-[Wiki](wiki)
+Check the [wiki](https://github.com/mess79/silver/wiki)
