@@ -29,6 +29,12 @@ const invoice = {
     amount: Number,
     tax: Number
   }],
+  fee_total: Number,
+  transaction: [{
+    payment_type: String,
+    Reference: String,
+    amount: Number
+  }],
   paid: Boolean,
   closed: Boolean,
   credit: Boolean,
