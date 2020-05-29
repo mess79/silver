@@ -1,5 +1,0 @@
-# Collection: Person
-
-```javascript
-
-```

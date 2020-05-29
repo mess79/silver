@@ -40,4 +40,4 @@ Make sure to link the config map to the deployment and then it will use differen
 
 # Full documents and api
 
-[Documents](docs/index.md)
+[Wiki](wiki)
