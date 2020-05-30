@@ -12,15 +12,16 @@ const order = {
     zip: String,
     country: String
   },
+  delivery_method: String,
   requirements: [{
     _id: false,
     name: String,
-    quantity_received: Number,
     status: [{
       _id: false,
       date: Date,
-      missing: Boolean,
-      received: Boolean,
+      omitted: Boolean,
+      satisfied: Boolean,
+      quantity_received: Number,
       comment: String
     }]
   }],
@@ -28,7 +29,6 @@ const order = {
     line_item: [{
       _id: false,
       service: String,
-      quantity: Number,
       amount: Number,
       tax: Number
     }],
