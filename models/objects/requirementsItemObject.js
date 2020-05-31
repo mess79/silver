@@ -1,8 +1,8 @@
 
 const item = {
   name: String,
-  link: String,
-  quantity: Number,
+  //link: String,
+  //quantity: Number,
   icon: String,
   description: String,
   variable : []
