@@ -56,12 +56,8 @@ requirements.create({
     purpose: "Business",
     requirement: [{
       origin : ["5c52025cfba160407062c19f"],
-      name: "Passport",
       link: false,
       quantity: 1,
-      icon: false,
-      description: "#pages pages spare and #validityMonths months left after travel",
-      variable: ["pages", "validityMonths"],
       variableInput: {
         pages : 2,
         validityMonths: 6
@@ -73,12 +69,8 @@ requirements.create({
     },
     {
       origin : ["5c515ecc6d0c353dba975830"],
-      name: "Passport",
       link: false,
       quantity: 1,
-      icon: false,
-      description: "#pages pages spare and #validityMonths months left after travel",
-      variable: ["pages", "validityMonths"],
       variableInput: {
         pages : 1,
         validityMonths: 3
@@ -93,12 +85,8 @@ requirements.create({
     purpose: "Tourist",
     requirement: [{
       origin : ["5c52025cfba160407062c19f"],
-      name: "Passport",
       link: false,
       quantity: 1,
-      icon: false,
-      description: "#pages pages spare and #validityMonths months left after travel",
-      variable: ["pages", "validityMonths"],
       variableInput: {
         pages : 2,
         validityMonths: 6
@@ -110,12 +98,8 @@ requirements.create({
     },
     {
       origin : ["5c515ecc6d0c353dba975830"],
-      name: "Passport",
       link: false,
       quantity: 1,
-      icon: false,
-      description: "#pages pages spare and #validityMonths months left after travel",
-      variable: ["pages", "validityMonths"],
       variableInput: {
         pages : 1,
         validityMonths: 3
@@ -140,8 +124,6 @@ requirements.create({
 const requirementsItem = require("./models/requirementsItem");
 requirementsItem.create({
     name: "Passport",
-    link: false,
-    quantity: 1,
     icon: false,
     description: "#pages pages spare and #validityMonths months left after travel",
     variable: ["pages", "validityMonths"]
