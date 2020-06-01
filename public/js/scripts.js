@@ -179,10 +179,10 @@ $(function() {
         break
       case "person_data":
         urls = {
-          get: "/person_data/options/country/china/id/" + ids().id,
-          post: "/person_data/options/country/india/id/" + ids().id,
-          put: "/person_data/options/country/china",
-          patch: "/person_data/options/country/china/",
+          get: "/person_data/options/origin_country/china/id/" + ids().id,
+          post: "/person_data/options/origin_country/india/id/" + ids().id,
+          put: "/person_data/options/origin_country/china",
+          patch: "/person_data/options/origin_country/china/",
           delete: "/person_data/options/id/" + ids().delete_id
         }
         break
