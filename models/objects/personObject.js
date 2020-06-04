@@ -18,7 +18,6 @@ const obj = function(country) {
     _.each(countryMap[i], function(a, b) {
       if (a.import) {
         _.each(a.import, function(c, d) {
-          //console.log(_.isArray(c));
           if (c.type === "date") {
             a.import[d] = Date
           } else if (_.isArray(c)) {
