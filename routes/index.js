@@ -11,6 +11,7 @@ const routes = function(express, app) {
     invoice: require("./invoice")(express),
     company: require("./company")(express),
     host: require("./hosts")(express),
+    requirements: require("./requirements")(express),
     pages: require("./pages")(express),
     errors: require("./errors")
   }

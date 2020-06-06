@@ -10,7 +10,10 @@ $(function() {
       invoice: $(".invoice").val(),
       company: $(".company").val(),
       name: $(".name").val(),
-      host: $(".host").val()
+      host: $(".host").val(),
+      from: $(".from").val(),
+      to: $(".to").val(),
+      for: $(".for").val()
     }
     return obj;
   }
@@ -204,6 +207,15 @@ $(function() {
           delete: "/host/" + ids().name
         }
         break
+      case "requirements":
+        urls = {
+          get: "/requirements/from/" +ids().from +"/to/"+ ids().to +"/for/" + ids().for,
+          post: "/requirements/from/" +ids().from +"/to/"+ ids().to +"/for/" + ids().for,
+          put: "/requirements/from/" +ids().from +"/to/"+ ids().to +"/for/" + ids().for,
+          patch: "/requirements/from/" +ids().from +"/to/"+ ids().to +"/for/" + ids().for,
+          delete: "/requirements/from/" +ids().from +"/to/"+ ids().to +"/for/" + ids().for
+
+        }
     }
   })
 
