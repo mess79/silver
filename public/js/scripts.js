@@ -209,11 +209,11 @@ $(function() {
         break
       case "requirements":
         urls = {
-          get: "/requirements/from/" +ids().from +"/to/"+ ids().to +"/for/" + ids().for,
-          post: "/requirements/from/" +ids().from +"/to/"+ ids().to +"/for/" + ids().for,
-          put: "/requirements/from/" +ids().from +"/to/"+ ids().to +"/for/" + ids().for,
-          patch: "/requirements/from/" +ids().from +"/to/"+ ids().to +"/for/" + ids().for,
-          delete: "/requirements/from/" +ids().from +"/to/"+ ids().to +"/for/" + ids().for
+          get: "/requirements/from/" +ids().from +"/to/"+ ids().to,
+          post: "/requirements/from/" +ids().from +"/to/"+ ids().to,
+          put: "/requirements/from/" +ids().from +"/to/"+ ids().to,
+          patch: "/requirements/from/" +ids().from +"/to/"+ ids().to,
+          delete: "/requirements/from/" +ids().from +"/to/"+ ids().to
 
         }
     }
@@ -223,7 +223,6 @@ $(function() {
 
   $("input").on("change", function() {
     $("#collection").trigger("change");
-    //console.log(JSON.stringify(obj()))
   })
 
   function readCookie(name) {
