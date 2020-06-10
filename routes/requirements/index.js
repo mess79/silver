@@ -5,7 +5,7 @@ const lib = require("../../lib/requirements");
 const requirements = function(express) {
   const router = express.Router();
 
-  router.route(["/requirements/from/:sending_country/to/:receiving_country/for/:purpose"])
+  router.route(["/requirements/from/:sending_country/to/:receiving_country"])
     .get(function(req, res, next) {
       lib.retrieve(req)
         .then(function(result) {
