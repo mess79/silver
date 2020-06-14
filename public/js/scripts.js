@@ -142,6 +142,53 @@ $(function() {
           }
         }
         break;
+      case "requirements":
+        data = {
+          "country_from": ids().from,
+          "country_to": ids().to,
+          "category": [{
+              "purpose": ids().for,
+              "requirement": [{
+                  "nationality": {
+                    "countryCodes": [
+                      "ESP",
+                      "ITA"
+                    ],
+                    "exclude": true
+                  },
+                  "origin": [
+                    "5c52025cfba160407062c19f"
+                  ],
+                  "link": "false",
+                  "quantity": 1,
+                  "variableInput": {
+                    "pages": 2,
+                    "validityMonths": 6
+                  }
+                },
+                {
+                  "nationality": {
+                    "countryCodes": [
+                      "ESP",
+                      "ITA"
+                    ],
+                    "exclude": false
+                  },
+                  "origin": [
+                    "5c515ecc6d0c353dba975830"
+                  ],
+                  "link": "false",
+                  "quantity": 1,
+                  "variableInput": {
+                    "pages": 1,
+                    "validityMonths": 3
+                  }
+                }
+              ]
+            }
+          ]
+        }
+        break;
     }
     //console.log(data);
     return data;
@@ -209,11 +256,11 @@ $(function() {
         break
       case "requirements":
         urls = {
-          get: "/requirements/from/" +ids().from +"/to/"+ ids().to,
-          post: "/requirements/from/" +ids().from +"/to/"+ ids().to,
-          put: "/requirements/from/" +ids().from +"/to/"+ ids().to,
-          patch: "/requirements/from/" +ids().from +"/to/"+ ids().to,
-          delete: "/requirements/from/" +ids().from +"/to/"+ ids().to
+          get: "/requirements/from/" + ids().from + "/to/" + ids().to,
+          post: "/requirements/from/" + ids().from + "/to/" + ids().to,
+          put: "/requirements",
+          patch: "/requirements/from/" + ids().from + "/to/" + ids().to,
+          delete: "/requirements/from/" + ids().from + "/to/" + ids().to
 
         }
     }
@@ -300,7 +347,6 @@ $(function() {
 
   $(".put").on('click', function(event) {
     event.preventDefault();
-    //console.log(obj())
     $.ajax({
       url: urls.put,
       type: 'PUT',
