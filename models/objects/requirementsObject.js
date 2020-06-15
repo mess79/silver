@@ -22,7 +22,11 @@ const requirements = {
         countryCodes: []
       }
     }]
-  }]
+  }],
+  active: {
+    default: true,
+    type: Boolean
+  }
 }
 
 module.exports = requirements;

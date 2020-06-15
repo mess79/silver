@@ -353,6 +353,7 @@ $(function() {
       headers: headers(),
       data: JSON.stringify(obj()),
       success: function(result) {
+        //console.log(result);
         $(".url").text(urls.put);
         $(".output").text(JSON.stringify(result, null, 4));
       },
@@ -369,7 +370,6 @@ $(function() {
       type: 'DELETE',
       headers: headers(),
       success: function(result) {
-        //console.log(data);
         $(".url").text(urls.delete);
         $(".output").text(JSON.stringify(result, null, 4));
       },
