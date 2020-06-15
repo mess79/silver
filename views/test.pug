@@ -16,31 +16,32 @@ html
 				option(value="company") company
 				option(value="host") host
 				option(value="requirements", selected) requirements
-			p id
-			input.id(type="text", value="5ecd4bcbd847184b75270ec0")
-			p Delete - id
-			input.delete_id(type="text", value="")
+				option(value="requirement_item", selected) requirement item
 			br
-			p order #
-			input.order(type="text", value="1")
-			p invoice #
-			input.invoice(type="text", value="1")
-			p account
-			input.account(type="text", value="5ec14ea47a3306113e1811cf")
-			br
-			p name
-			input.name(type="text", value="default")
-			p host
-			input.host(type="text", value="localhost:8080")
-			p company
-			input.company(type="text", value="5ec82c958be52a1508008717")
-			br
-			p From
-			input.from(type="text", value="GBR")
-			p To
-			input.to(type="text", value="CHN")
-			p For
-			input.for(type="text", value="Business")
+			p.op id
+			input.op#id(type="text", value="5ecd4bcbd847184b75270ec0")
+			p.op Delete - id
+			input.op#delete_id(type="text", value="")
+			p.op order #
+			input.op#order(type="text", value="1")
+			p.op invoice #
+			input.op#invoice(type="text", value="1")
+			p.op account
+			input.op#account(type="text", value="5ec14ea47a3306113e1811cf")
+			p.op name
+			input.op#name(type="text", value="default")
+			p.op host
+			input.op#host(type="text", value="localhost:8080")
+			p.op company
+			input.op#company(type="text", value="5ec82c958be52a1508008717")
+			p.op From
+			input.op#from(type="text", value="GBR")
+			p.op To
+			input.op#to(type="text", value="CHN")
+			p.op For
+			input.op#for(type="text", value="Business")
+			p.op requirement item
+			input.op#item(type="text", value="5ec82c958be52a1508008714")
 			br
 			a.post(href='/api') Post
 			a.put(href='/api') Put

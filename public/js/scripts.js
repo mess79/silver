@@ -3,17 +3,18 @@ $(function() {
   let ids = function() {
 
     let obj = {
-      id: $(".id").val(),
-      account: $(".account").val(),
-      order: $(".order").val(),
-      delete_id: $(".delete_id").val(),
-      invoice: $(".invoice").val(),
-      company: $(".company").val(),
-      name: $(".name").val(),
-      host: $(".host").val(),
-      from: $(".from").val(),
-      to: $(".to").val(),
-      for: $(".for").val()
+      id: $("#id").val(),
+      account: $("#account").val(),
+      order: $("#order").val(),
+      delete_id: $("#delete_id").val(),
+      invoice: $("#invoice").val(),
+      company: $("#company").val(),
+      name: $("#name").val(),
+      host: $("#host").val(),
+      from: $("#from").val(),
+      to: $("#to").val(),
+      for: $("#for").val(),
+      item: $("#item").val()
     }
     return obj;
   }
@@ -147,56 +148,74 @@ $(function() {
           "country_from": ids().from,
           "country_to": ids().to,
           "category": [{
-              "purpose": ids().for,
-              "requirement": [{
-                  "nationality": {
-                    "countryCodes": [
-                      "ESP",
-                      "ITA"
-                    ],
-                    "exclude": true
-                  },
-                  "origin": [
-                    "5c52025cfba160407062c19f"
+            "purpose": ids().for,
+            "requirement": [{
+                "nationality": {
+                  "countryCodes": [
+                    "ESP",
+                    "ITA"
                   ],
-                  "link": "false",
-                  "quantity": 1,
-                  "variableInput": {
-                    "pages": 2,
-                    "validityMonths": 6
-                  }
+                  "exclude": true
                 },
-                {
-                  "nationality": {
-                    "countryCodes": [
-                      "ESP",
-                      "ITA"
-                    ],
-                    "exclude": false
-                  },
-                  "origin": [
-                    "5c515ecc6d0c353dba975830"
-                  ],
-                  "link": "false",
-                  "quantity": 1,
-                  "variableInput": {
-                    "pages": 1,
-                    "validityMonths": 3
-                  }
+                "origin": [
+                  "5c52025cfba160407062c19f"
+                ],
+                "link": "false",
+                "quantity": 1,
+                "variableInput": {
+                  "pages": 2,
+                  "validityMonths": 6
                 }
-              ]
-            }
-          ]
+              },
+              {
+                "nationality": {
+                  "countryCodes": [
+                    "ESP",
+                    "ITA"
+                  ],
+                  "exclude": false
+                },
+                "origin": [
+                  "5c515ecc6d0c353dba975830"
+                ],
+                "link": "false",
+                "quantity": 1,
+                "variableInput": {
+                  "pages": 1,
+                  "validityMonths": 3
+                }
+              }
+            ]
+          }]
+        }
+        break;
+      case "requirement_item":
+        data = {
+          "variable": ["pages", "validityMonths"],
+          "name": "Passport",
+          "icon": "false",
+          "description": "#pages pages spare and #validityMonths months left after travel"
         }
         break;
     }
-    //console.log(data);
+
     return data;
   };
 
-  //  const order = {
 
-  //}
+  const hideshow = function(id) {
+    $(".op").css({
+      "display": "none"
+    })
+    $(id).each(function(i) {
+      $(id[i]).css({
+        "display": "inline-block"
+      }).prev().css({
+        "display": "inline-block"
+      })
+    })
+
+  }
 
   $("#collection").on("change", function(event) {
     switch ($(this).val()) {
@@ -208,6 +227,7 @@ $(function() {
           patch: "/order/" + ids().order,
           delete: "/order/" + ids().order
         }
+        hideshow(["#order", "#delete_id"])
         break
       case "account":
         urls = {
@@ -217,6 +237,7 @@ $(function() {
           patch: "account/" + ids().account,
           delete: "account/" + ids().account
         }
+        hideshow(["#account", "#delete_id"])
         break
       case "invoice":
         urls = {
@@ -226,6 +247,7 @@ $(function() {
           patch: "/invoice/" + ids().invoice,
           delete: "#"
         }
+        hideshow(["#invoice", "#delete_id"])
         break
       case "person_data":
         urls = {
@@ -235,6 +257,7 @@ $(function() {
           patch: "/person_data/options/origin_country/china/",
           delete: "/person_data/options/id/" + ids().delete_id
         }
+        hideshow(["#id", "#delete_id"])
         break
       case "company":
         urls = {
@@ -244,6 +267,7 @@ $(function() {
           patch: "/company/" + ids().company,
           delete: "/company/" + ids().company
         }
+        hideshow(["#company", "#delete_id"])
         break
       case "host":
         urls = {
@@ -253,6 +277,7 @@ $(function() {
           patch: "/host",
           delete: "/host/" + ids().name
         }
+        hideshow(["#host", "#delete_id"])
         break
       case "requirements":
         urls = {
@@ -261,8 +286,19 @@ $(function() {
           put: "/requirements",
           patch: "/requirements/from/" + ids().from + "/to/" + ids().to,
           delete: "/requirements/from/" + ids().from + "/to/" + ids().to
-
         }
+        hideshow(["#from", "#to", "#for"])
+        break
+      case "requirement_item":
+        urls = {
+          get: "/requirement_item/" + ids().item,
+          post: "/requirement_item/" + ids().item,
+          put: "/requirement_item",
+          patch: "/requirement_item" + ids().item,
+          delete: "/requirement_item" + ids().item,
+        }
+        hideshow(["#item"])
+        break
     }
   })
 
