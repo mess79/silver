@@ -5,6 +5,7 @@ const item = {
   //quantity: Number,
   icon: String,
   description: String,
+  comment: String,
   variable : []
 }
 

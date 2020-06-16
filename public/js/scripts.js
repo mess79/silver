@@ -193,6 +193,7 @@ $(function() {
         data = {
           "variable": ["pages", "validityMonths"],
           "name": "Passport",
+          "comment": "a test comment",
           "icon": "false",
           "description": "#pages pages spare and #validityMonths months left after travel"
         }
@@ -294,8 +295,8 @@ $(function() {
           get: "/requirement_item/" + ids().item,
           post: "/requirement_item/" + ids().item,
           put: "/requirement_item",
-          patch: "/requirement_item" + ids().item,
-          delete: "/requirement_item" + ids().item,
+          patch: "/requirement_item/" + ids().item,
+          delete: "/requirement_item/" + ids().item,
         }
         hideshow(["#item"])
         break
