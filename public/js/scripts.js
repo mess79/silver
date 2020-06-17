@@ -191,7 +191,7 @@ $(function() {
         break;
       case "requirements_host":
         data = {
-          "host": "5ec849011ac58b247bb34526"
+          "host": "5ec849011ac58b247bb34526",
           "category": [{
             "purpose": ids().for,
             "requirement": [{
