@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 const requirements = {
   country_from: String,
   country_to: String,
+  host: {type: Schema.Types.ObjectId, ref: 'host' },
+  company: {type: Schema.Types.ObjectId, ref: 'company'},
   category: [{
     _id: false,
     purpose: String,

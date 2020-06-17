@@ -12,6 +12,7 @@ const routes = function(express, app) {
     company: require("./company")(express),
     host: require("./hosts")(express),
     requirements: require("./requirements")(express),
+    requirements_host: require("./requirements_host")(express),
     requirement_item: require("./requirement_item")(express),
     pages: require("./pages")(express),
     errors: require("./errors")

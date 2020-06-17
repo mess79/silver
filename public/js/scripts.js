@@ -189,6 +189,51 @@ $(function() {
           }]
         }
         break;
+      case "requirements_host":
+        data = {
+          "host": "5ec849011ac58b247bb34526"
+          "category": [{
+            "purpose": ids().for,
+            "requirement": [{
+                "nationality": {
+                  "countryCodes": [
+                    "ESP",
+                    "ITA"
+                  ],
+                  "exclude": true
+                },
+                "origin": [
+                  "5c52025cfba160407062c19f"
+                ],
+                "link": "false",
+                "quantity": 1,
+                "variableInput": {
+                  "pages": 2,
+                  "validityMonths": 6
+                }
+              },
+              {
+                "nationality": {
+                  "countryCodes": [
+                    "ESP",
+                    "ITA"
+                  ],
+                  "exclude": false
+                },
+                "origin": [
+                  "5c515ecc6d0c353dba975830"
+                ],
+                "link": "false",
+                "quantity": 1,
+                "variableInput": {
+                  "pages": 1,
+                  "validityMonths": 3
+                }
+              }
+            ]
+          }]
+        }
+        break;
       case "requirement_item":
         data = {
           "variable": ["pages", "validityMonths"],
@@ -289,6 +334,16 @@ $(function() {
           delete: "/requirements/from/" + ids().from + "/to/" + ids().to
         }
         hideshow(["#from", "#to", "#for"])
+        break
+      case "requirements_host":
+        urls = {
+          get: "/requirements_host",
+          post: "/requirements_host",
+          put: "/requirements_host",
+          patch: "/requirements_host",
+          delete: "/requirements_host"
+        }
+        hideshow([])
         break
       case "requirement_item":
         urls = {
