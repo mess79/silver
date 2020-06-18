@@ -14,7 +14,8 @@ $(function() {
       from: $("#from").val(),
       to: $("#to").val(),
       for: $("#for").val(),
-      item: $("#item").val()
+      item: $("#item").val(),
+      hostId: $("#hostid").val()
     }
     return obj;
   }
@@ -191,7 +192,53 @@ $(function() {
         break;
       case "requirements_host":
         data = {
-          "host": "5ec849011ac58b247bb34526",
+          "host": ids().hostId,
+          "category": [{
+            "purpose": ids().for,
+            "requirement": [{
+                "nationality": {
+                  "countryCodes": [
+                    "ESP",
+                    "ITA"
+                  ],
+                  "exclude": true
+                },
+                "origin": [
+                  "5c52025cfba160407062c19f"
+                ],
+                "link": "false",
+                "quantity": 1,
+                "variableInput": {
+                  "pages": 2,
+                  "validityMonths": 6
+                }
+              },
+              {
+                "nationality": {
+                  "countryCodes": [
+                    "ESP",
+                    "ITA"
+                  ],
+                  "exclude": false
+                },
+                "origin": [
+                  "5c515ecc6d0c353dba975830"
+                ],
+                "link": "false",
+                "quantity": 1,
+                "variableInput": {
+                  "pages": 1,
+                  "validityMonths": 3
+                }
+              }
+            ]
+          }]
+        }
+        break;
+      case "requirements_company":
+        data = {
+          "host": ids().hostId,
+          "company": ids().company,
           "category": [{
             "purpose": ids().for,
             "requirement": [{
@@ -337,13 +384,23 @@ $(function() {
         break
       case "requirements_host":
         urls = {
-          get: "/requirements_host",
-          post: "/requirements_host",
-          put: "/requirements_host",
-          patch: "/requirements_host",
-          delete: "/requirements_host"
+          get: "/requirements/host/" + ids().hostId,
+          post: "/requirements/host/" + ids().hostId,
+          put: "/requirements/host",
+          patch: "/requirements/host/" + ids().hostId,
+          delete: "/requirements/host/" + ids().hostId
         }
-        hideshow([])
+        hideshow(["#hostid"])
+        break
+      case "requirements_company":
+        urls = {
+          get: "/requirements/company/" + ids().company,
+          post: "/requirements/company/" + ids().company,
+          put: "/requirements/company",
+          patch: "/requirements/company/" + ids().company,
+          delete: "/requirements/company/" + ids().company
+        }
+        hideshow(["#hostid", "#company"])
         break
       case "requirement_item":
         urls = {
