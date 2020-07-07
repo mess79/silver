@@ -29,6 +29,7 @@ input, select {
 }
 
 a, button {
+  cursor: pointer; 
   text-decoration: none;
   display: inline-block;
   background-color: #007eff;
